@@ -1,0 +1,2442 @@
+local _0x4FF5 = loadstring(game:HttpGet(string.char(104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,100,97,121,117,109,115,122,47,77,101,111,119,115,47,114,101,102,115,47,104,101,97,100,115,47,109,97,105,110,47,76,105,98)))()
+local _0xE346 = _0x4FF5:CreateWindow({
+_0x100A =string.char(80,97,114,97,99,101,116,97,109,111,108),
+Footer ="",
+Theme =string.char(68,97,114,107,84,104,101,109,101),
+_0x94EF = UDim2.fromOffset(600, 380),
+_0x0394 = true,
+Resizable = true,
+AutoShow = true,
+ToggleKeybind = Enum.KeyCode.RightControl,
+NotifySide =string.char(82,105,103,104,116),
+ShowCustomCursor = true,
+Font = Enum.Font.GothamMedium,
+})
+local _0xEF5E = {
+_0xE5A5 = game:GetService(string.char(80,108,97,121,101,114,115)),
+_0xA3CC = game:GetService(string.char(82,117,110,83,101,114,118,105,99,101)),
+_0x9AAD = game:GetService(string.char(87,111,114,107,115,112,97,99,101)),
+UserInputService = game:GetService(string.char(85,115,101,114,73,110,112,117,116,83,101,114,118,105,99,101)),
+VirtualUser = game:GetService(string.char(86,105,114,116,117,97,108,85,115,101,114)),
+}
+local _0xE5A5 = _0xEF5E.Players
+local _0x9AAD = _0xEF5E.Workspace
+local _0xA3CC = _0xEF5E.RunService
+local _0x9AFC = _0xE5A5.LocalPlayer
+_0x4FF5:GiveSignal(_0x9AFC.Idled:Connect(function()
+pcall(function()
+_0xEF5E.VirtualUser:CaptureController()
+_0xEF5E.VirtualUser:ClickButton2(Vector2.new(0, 0))
+end)
+end))
+local _0xACEB = {string.char(115,97,105,110,116),string.char(99,111,114,112,115,101)}
+local _0x0978 = { _0xBFD8 = true, MeshPart = true }
+local _0x5ECA = {
+TextPool = {},
+SquarePool = {},
+PoolLimit = 150,
+}
+function _0x5ECA.Notify(Message)
+pcall(function()
+_0x4FF5:Notify(Message)
+end)
+end
+function _0x5ECA.GetRoot()
+local _0x4AC1 = _0x9AFC.Character
+return _0x4AC1 and _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+end
+function _0x5ECA.NewText(_0xCD59)
+local _0xFBE2, _0x8544 = pcall(function()
+local _0x40D5 = Drawing.new(string.char(84,101,120,116))
+_0x40D5.Size = 15
+_0x40D5.Center = true
+_0x40D5.Outline = true
+_0x40D5.Color = _0xCD59
+_0x40D5.Visible = false
+pcall(function()
+_0x40D5.Font = 3
+end)
+return _0x40D5
+end)
+return _0xFBE2 and _0x8544 or nil
+end
+function _0x5ECA.NewSquare(_0xCD59)
+local _0xFBE2, _0x8544 = pcall(function()
+local _0xAE21 = Drawing.new(string.char(83,113,117,97,114,101))
+_0xAE21.Filled = true
+_0xAE21.Thickness = 1
+_0xAE21.Transparency = 1
+_0xAE21.Color = _0xCD59
+_0xAE21.Visible = false
+return _0xAE21
+end)
+return _0xFBE2 and _0x8544 or nil
+end
+function _0x5ECA.NewBox(_0xCD59, _0xC306, ZIndex)
+local _0xFBE2, _0x8544 = pcall(function()
+local _0xAE21 = Drawing.new(string.char(83,113,117,97,114,101))
+_0xAE21.Filled = false
+_0xAE21.Thickness = _0xC306
+_0xAE21.Transparency = 1
+_0xAE21.Color = _0xCD59
+_0xAE21.ZIndex = ZIndex
+_0xAE21.Visible = false
+return _0xAE21
+end)
+return _0xFBE2 and _0x8544 or nil
+end
+function _0x5ECA.Remove(_0x8544)
+if _0x8544 then
+pcall(function()
+_0x8544:Remove()
+end)
+end
+end
+function _0x5ECA.AcquireText(_0xCD59)
+local _0x8544 = table.remove(_0x5ECA.TextPool)
+if _0x8544 then
+_0x8544.Color = _0xCD59
+return _0x8544
+end
+return _0x5ECA.NewText(_0xCD59)
+end
+function _0x5ECA.ReleaseText(_0x8544)
+_0x8544.Visible = false
+if #_0x5ECA.TextPool >= _0x5ECA.PoolLimit then
+_0x5ECA.Remove(_0x8544)
+else
+table.insert(_0x5ECA.TextPool, _0x8544)
+end
+end
+function _0x5ECA.AcquireSquare(_0xCD59)
+local _0x8544 = table.remove(_0x5ECA.SquarePool)
+if _0x8544 then
+_0x8544.Color = _0xCD59
+return _0x8544
+end
+return _0x5ECA.NewSquare(_0xCD59)
+end
+function _0x5ECA.ReleaseSquare(_0x8544)
+_0x8544.Visible = false
+if #_0x5ECA.SquarePool >= _0x5ECA.PoolLimit * 2 then
+_0x5ECA.Remove(_0x8544)
+else
+table.insert(_0x5ECA.SquarePool, _0x8544)
+end
+end
+function _0x5ECA.ClearPools()
+for _, _0x8544 in ipairs(_0x5ECA.TextPool) do
+_0x5ECA.Remove(_0x8544)
+end
+for _, _0x8544 in ipairs(_0x5ECA.SquarePool) do
+_0x5ECA.Remove(_0x8544)
+end
+table.clear(_0x5ECA.TextPool)
+table.clear(_0x5ECA.SquarePool)
+end
+function _0x5ECA.Connect(Holder, Signal, Callback)
+if not Holder.Connection then
+Holder.Connection = Signal:Connect(Callback)
+end
+end
+function _0x5ECA.Disconnect(Holder)
+if Holder.Connection then
+Holder.Connection:Disconnect()
+Holder.Connection = nil
+end
+end
+function _0x5ECA.IsTarget(Instance)
+return Instance:IsA(string.char(77,111,100,101,108)) or Instance:IsA(string.char(66,97,115,101,80,97,114,116))
+end
+function _0x5ECA.GetPosition(_0x2FB0)
+if _0x2FB0:IsA(string.char(66,97,115,101,80,97,114,116)) then
+return _0x2FB0.Position
+end
+if _0x2FB0:IsA(string.char(77,111,100,101,108)) then
+return _0x2FB0:GetPivot().Position
+end
+return nil
+end
+function _0x5ECA.GetCFrame(_0x2FB0)
+if _0x2FB0:IsA(string.char(66,97,115,101,80,97,114,116)) then
+return _0x2FB0.CFrame
+end
+if _0x2FB0:IsA(string.char(77,111,100,101,108)) then
+return _0x2FB0:GetPivot()
+end
+return nil
+end
+function _0x5ECA.HasNearbyPlayer(_0xBFC2, _0x8C00)
+for _, _0x99F6 in ipairs(_0xE5A5:GetPlayers()) do
+if _0x99F6 ~= _0x9AFC then
+local _0x4AC1 = _0x99F6.Character
+local _0x1EC9 = _0x4AC1 and _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+if _0x1EC9 and (_0x1EC9.Position - _0xBFC2).Magnitude <= _0x8C00 then
+return true
+end
+end
+end
+return false
+end
+local _0xD8C7 = {}
+_0xD8C7.__index = _0xD8C7
+function _0xD8C7.new(Options)
+return setmetatable({
+Enabled = false,
+MaxDistance = Options.MaxDistance,
+_0xCD59 = Options.Color,
+Resolve = Options.Resolve,
+Accept = Options.Accept or _0x5ECA.IsTarget,
+Deep = Options.Deep == true,
+_0x100A = Options.Title,
+_0x86B2 = Vector3.new(0, Options.Offset or 3, 0),
+_0xFD27 = Options.PosRate or 0,
+_0x1392 = Options.Cull or 0.5,
+Entries = {},
+Added = nil,
+Removed = nil,
+StartId = 0,
+}, _0xD8C7)
+end
+function _0xD8C7.Free(_0xBEF8)
+local _0x40D5 = _0xBEF8.Text
+if _0x40D5 then
+_0x5ECA.ReleaseText(_0x40D5)
+_0xBEF8.Text = nil
+_0xBEF8.Shown = false
+_0xBEF8.Dist = -1
+end
+end
+function _0xD8C7:Add(Instance)
+if self.Entries[Instance] or not Instance.Parent or not self.Accept(Instance) then
+return
+end
+self.Entries[Instance] = {
+_0x40D5 = nil,
+_0xE198 = false,
+_0x2A0F = -1,
+Pos = nil,
+PosAt = 0,
+Wake = 0,
+}
+end
+function _0xD8C7:Remove(Instance)
+local _0xBEF8 = self.Entries[Instance]
+if _0xBEF8 then
+_0xD8C7.Free(_0xBEF8)
+self.Entries[Instance] = nil
+end
+end
+function _0xD8C7:Clear()
+for Instance in pairs(self.Entries) do
+self:Remove(Instance)
+end
+end
+function _0xD8C7:Start()
+self.StartId += 1
+local _0x1F60 = self.StartId
+task.spawn(function()
+local _0x25F2 = self.Resolve()
+while not _0x25F2 do
+task.wait(1)
+if _0x1F60 ~= self.StartId or not self.Enabled then
+return
+end
+_0x25F2 = self.Resolve()
+end
+if _0x1F60 ~= self.StartId or not self.Enabled then
+return
+end
+if self.Deep then
+self.Added = _0x25F2.DescendantAdded:Connect(function(Instance)
+self:Add(Instance)
+end)
+self.Removed = _0x25F2.DescendantRemoving:Connect(function(Instance)
+self:Remove(Instance)
+end)
+else
+self.Added = _0x25F2.ChildAdded:Connect(function(Instance)
+self:Add(Instance)
+end)
+self.Removed = _0x25F2.ChildRemoved:Connect(function(Instance)
+self:Remove(Instance)
+end)
+end
+local _0x31FB = self.Deep and _0x25F2:GetDescendants() or _0x25F2:GetChildren()
+for _0x9C48, Instance in ipairs(_0x31FB) do
+self:Add(Instance)
+if _0x9C48 % 1500 == 0 then
+task.wait()
+if _0x1F60 ~= self.StartId or not self.Enabled then
+return
+end
+end
+end
+end)
+end
+function _0xD8C7:Stop()
+self.StartId += 1
+if self.Added then
+self.Added:Disconnect()
+self.Added = nil
+end
+if self.Removed then
+self.Removed:Disconnect()
+self.Removed = nil
+end
+self:Clear()
+end
+function _0xD8C7:SetEnabled(_0x22A7)
+self.Enabled = _0x22A7
+if _0x22A7 then
+self:Start()
+else
+self:Stop()
+end
+end
+function _0xD8C7:SetColor(_0xCD59)
+self.Color = _0xCD59
+for _, _0xBEF8 in pairs(self.Entries) do
+if _0xBEF8.Text then
+_0xBEF8.Text.Color = _0xCD59
+end
+end
+end
+function _0xD8C7:Update(_0x0957, _0xB14F, _0x78F4)
+local _0x0B46 = self.MaxDistance
+local _0x86B2 = self.Offset
+local _0xFD27 = self.PosRate
+local _0x1392 = self.Cull
+local _0x100A = self.Title
+for Instance, _0xBEF8 in pairs(self.Entries) do
+if _0x78F4 >= _0xBEF8.Wake then
+if not Instance.Parent then
+self:Remove(Instance)
+else
+if _0x78F4 >= _0xBEF8.PosAt then
+_0xBEF8.Pos = _0x5ECA.GetPosition(Instance)
+_0xBEF8.PosAt = _0x78F4 + _0xFD27
+end
+local _0xBFC2 = _0xBEF8.Pos
+local _0x8C00 = _0xBFC2 and (_0xB14F - _0xBFC2).Magnitude
+if not _0x8C00 or _0x8C00 > _0x0B46 then
+_0xD8C7.Free(_0xBEF8)
+_0xBEF8.Wake = _0x78F4 + _0x1392
+else
+local _0xDBD7, _0x58CE = _0x0957:WorldToViewportPoint(_0xBFC2 + _0x86B2)
+if _0x58CE and _0xDBD7.Z > 0 then
+local _0x40D5 = _0xBEF8.Text
+if not _0x40D5 then
+_0x40D5 = _0x5ECA.AcquireText(self.Color)
+_0xBEF8.Text = _0x40D5
+_0xBEF8.Dist = -1
+end
+if _0x40D5 then
+local _0x2A0F = math.floor(_0x8C00)
+if _0xBEF8.Dist ~= _0x2A0F then
+_0xBEF8.Dist = _0x2A0F
+_0x40D5.Text = (_0x100A or Instance.Name) ..string.char(32,91).. _0x2A0F ..string.char(32,115,116,117,100,115,93)end
+_0x40D5.Position = Vector2.new(_0xDBD7.X, _0xDBD7.Y)
+if not _0xBEF8.Shown then
+_0x40D5.Visible = true
+_0xBEF8.Shown = true
+end
+end
+elseif _0xBEF8.Shown then
+_0xBEF8.Text.Visible = false
+_0xBEF8.Shown = false
+end
+end
+end
+end
+end
+end
+local _0x162D = {
+Enabled = false,
+Smooth = 0.25,
+FOV = 30,
+MaxDistance = 400,
+FriendCheck = true,
+Sticky = true,
+Deadzone = 2,
+FireRadius = 15,
+ClickInterval = 0.05,
+LastClick = 0,
+_0x2FB0 = nil,
+_0xE12D = nil,
+Prediction = 0.05,
+SpeedBoost = 0.5,
+ReferenceSpeed = 50,
+_0xE4AF = Vector3.zero,
+VelocityTarget = nil,
+MobTarget = true,
+MobNames = { MoeWolff = true },
+MobCache = {},
+MobCacheAt = 0,
+LastFind = 0,
+FindRate = 0.05,
+FireVisible = false,
+FireVisibleAt = 0,
+}
+function _0x162D.CreateFOV()
+if _0x162D.Circle then return end
+local _0xFBE2, _0xE12D = pcall(function()
+local _0x493F = Drawing.new(string.char(67,105,114,99,108,101))
+_0x493F.Thickness = 1.5
+_0x493F.NumSides = 64
+_0x493F.Radius = _0x162D.FOV
+_0x493F.Filled = false
+_0x493F.Color = Color3.fromRGB(255, 80, 80)
+_0x493F.Transparency = 0.6
+_0x493F.Visible = false
+return _0x493F
+end)
+if _0xFBE2 then
+_0x162D.Circle = _0xE12D
+end
+end
+function _0x162D.UpdateFOV(_0x50EF)
+local _0xE12D = _0x162D.Circle
+if not _0xE12D then return end
+local _0x94EF = _0x50EF.ViewportSize
+_0xE12D.Position = Vector2.new(_0x94EF.X / 2, _0x94EF.Y / 2)
+_0xE12D.Radius = _0x162D.FOV
+_0xE12D.Visible = true
+end
+function _0x162D.Click()
+local _0x78F4 = os.clock()
+if _0x78F4 - _0x162D.LastClick < _0x162D.ClickInterval then return end
+_0x162D.LastClick = _0x78F4
+if mouse1click then
+pcall(mouse1click)
+end
+end
+function _0x162D.GetEntity(_0x99F6)
+local _0xECC4 = _0x9AAD:FindFirstChild(string.char(69,110,116,105,116,105,101,115))
+return _0xECC4 and _0xECC4:FindFirstChild(_0x99F6.Name)
+end
+function _0x162D.GetHorse(_0x99F6)
+local _0x0ADE = _0x162D.GetEntity(_0x99F6)
+local _0xB1C3 = _0x0ADE and _0x0ADE:FindFirstChild(string.char(82,105,100,105,110,103,72,111,114,115,101))
+if _0xB1C3 and _0xB1C3:IsA(string.char(79,98,106,101,99,116,86,97,108,117,101)) and typeof(_0xB1C3.Value) ==string.char(73,110,115,116,97,110,99,101)then
+return _0xB1C3.Value
+end
+return nil
+end
+function _0x162D.BuildIgnore(_0x4AC1)
+local _0x1770 = {}
+local function _0x6E13(_0x8544)
+if _0x8544 then
+table.insert(_0x1770, _0x8544)
+end
+end
+_0x6E13(_0x9AFC.Character)
+_0x6E13(_0x4AC1)
+_0x6E13(_0x162D.GetEntity(_0x9AFC))
+_0x6E13(_0x162D.GetHorse(_0x9AFC))
+local _0x99F6 = _0xE5A5:GetPlayerFromCharacter(_0x4AC1)
+if _0x99F6 then
+_0x6E13(_0x162D.GetEntity(_0x99F6))
+_0x6E13(_0x162D.GetHorse(_0x99F6))
+end
+return _0x1770
+end
+function _0x162D.IsVisible(TargetPart, _0x4AC1)
+local _0x50EF = _0x9AAD.CurrentCamera
+if not _0x50EF or not TargetPart or not _0x4AC1 or not TargetPart.Parent then
+return false
+end
+local _0xB14F = _0x50EF.CFrame.Position
+local _0x8861 = TargetPart.Position - _0xB14F
+if _0x8861.Magnitude < 0.1 then
+return true
+end
+local _0x1A11 = _0x162D.BuildIgnore(_0x4AC1)
+local _0x2AEF = RaycastParams.new()
+_0x2AEF.FilterType = Enum.RaycastFilterType.Exclude
+_0x2AEF.IgnoreWater = true
+for _ = 1, 8 do
+_0x2AEF.FilterDescendantsInstances = _0x1A11
+local _0xB321 = _0x9AAD:Raycast(_0xB14F, _0x8861, _0x2AEF)
+if not _0xB321 then
+return true
+end
+local _0x3504 = _0xB321.Instance
+if _0x3504.CanCollide and _0x3504.Transparency < 0.95 then
+return false
+end
+table.insert(_0x1A11, _0x3504)
+end
+return false
+end
+function _0x162D.GetAimPart(_0x4AC1)
+return _0x4AC1:FindFirstChild(string.char(72,101,97,100))
+or _0x4AC1:FindFirstChild(string.char(85,112,112,101,114,84,111,114,115,111))
+or _0x4AC1:FindFirstChild(string.char(84,111,114,115,111))
+or _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+or _0x4AC1.PrimaryPart
+end
+function _0x162D.Measure(_0x50EF, _0xBFD8)
+local _0xDBD7, _0x58CE = _0x50EF:WorldToViewportPoint(_0xBFD8.Position)
+if not _0x58CE or _0xDBD7.Z <= 0 then
+return nil
+end
+local _0x0394 = _0x50EF.ViewportSize / 2
+return (Vector2.new(_0xDBD7.X, _0xDBD7.Y) - _0x0394).Magnitude, _0xDBD7
+end
+function _0x162D.IsMob(_0x4AC1)
+if not _0x162D.MobTarget or not _0x4AC1 then
+return false
+end
+if not _0x162D.MobNames[_0x4AC1.Name] then
+return false
+end
+return _0xE5A5:GetPlayerFromCharacter(_0x4AC1) == nil
+end
+function _0x162D.GetMobs(_0x78F4)
+if _0x78F4 - _0x162D.MobCacheAt < 0.5 then
+return _0x162D.MobCache
+end
+_0x162D.MobCacheAt = _0x78F4
+local _0x1770 = {}
+local _0x3809 = _0x162D.MobNames
+local _0xECC4 = _0x9AAD:FindFirstChild(string.char(69,110,116,105,116,105,101,115))
+if _0xECC4 then
+for _, Mob in ipairs(_0xECC4:GetChildren()) do
+if _0x3809[Mob.Name] and Mob:IsA(string.char(77,111,100,101,108)) then
+table.insert(_0x1770, Mob)
+end
+end
+end
+for _, Mob in ipairs(_0x9AAD:GetChildren()) do
+if _0x3809[Mob.Name] and Mob:IsA(string.char(77,111,100,101,108)) then
+table.insert(_0x1770, Mob)
+end
+end
+_0x162D.MobCache = _0x1770
+return _0x1770
+end
+function _0x162D.IsAliveTarget(_0xBFD8)
+if not _0xBFD8 or not _0xBFD8.Parent then return false end
+local _0x4AC1 = _0xBFD8.Parent
+local _0xCCEC = _0x4AC1:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))
+if _0xCCEC and _0xCCEC.Health <= 0 then return false end
+local _0x99F6 = _0xE5A5:GetPlayerFromCharacter(_0x4AC1)
+if _0x99F6 then
+if _0x99F6 == _0x9AFC or not _0xCCEC then return false end
+if _0x162D.FriendCheck and _0x9AFC:IsFriendsWith(_0x99F6.UserId) then
+return false
+end
+elseif not _0x162D.IsMob(_0x4AC1) then
+return false
+end
+local _0x6556 = _0x5ECA.GetRoot()
+if _0x6556 and (_0x6556.Position - _0xBFD8.Position).Magnitude > _0x162D.MaxDistance then
+return false
+end
+return true
+end
+function _0x162D.FindTarget(_0x50EF, _0x78F4)
+local _0xF6BB = nil
+local _0xD9EA = _0x162D.FOV
+local function _0xB0F3(_0x4AC1)
+if not _0x4AC1 or not _0x4AC1.Parent then return end
+local _0xBFD8 = _0x162D.GetAimPart(_0x4AC1)
+if not _0xBFD8 then return end
+local _0x8C00 = _0x162D.Measure(_0x50EF, _0xBFD8)
+if not _0x8C00 or _0x8C00 >= _0xD9EA then return end
+if not _0x162D.IsAliveTarget(_0xBFD8) then return end
+if not _0x162D.IsVisible(_0xBFD8, _0x4AC1) then return end
+_0xD9EA = _0x8C00
+_0xF6BB = _0xBFD8
+end
+for _, _0x99F6 in ipairs(_0xE5A5:GetPlayers()) do
+if _0x99F6 ~= _0x9AFC then
+_0xB0F3(_0x99F6.Character)
+end
+end
+if _0x162D.MobTarget then
+for _, Mob in ipairs(_0x162D.GetMobs(_0x78F4)) do
+_0xB0F3(Mob)
+end
+end
+return _0xF6BB
+end
+function _0x162D.GetTarget(_0x50EF, _0x78F4)
+local _0x7C63 = _0x162D.Target
+if _0x162D.Sticky and _0x7C63 and _0x162D.IsAliveTarget(_0x7C63) then
+return _0x7C63
+end
+if _0x78F4 - _0x162D.LastFind >= _0x162D.FindRate then
+_0x162D.LastFind = _0x78F4
+_0x162D.Target = _0x162D.FindTarget(_0x50EF, _0x78F4)
+elseif _0x7C63 and not _0x162D.IsAliveTarget(_0x7C63) then
+_0x162D.Target = nil
+end
+return _0x162D.Target
+end
+function _0x162D.GetAimPosition(_0x2FB0, DeltaTime)
+local _0xB3BF = _0x2FB0.AssemblyLinearVelocity
+if _0x162D.VelocityTarget ~= _0x2FB0 then
+_0x162D.VelocityTarget = _0x2FB0
+_0x162D.Velocity = _0xB3BF
+else
+local _0xE698 = 1 - math.exp(-12 * math.min(DeltaTime, 0.1))
+_0x162D.Velocity = _0x162D.Velocity:Lerp(_0xB3BF, _0xE698)
+end
+local _0xCFA4 = _0x162D.Velocity.Magnitude
+local _0x5C1A = 1 + math.clamp(_0xCFA4 / _0x162D.ReferenceSpeed, 0, 2) * _0x162D.SpeedBoost
+return _0x2FB0.Position + _0x162D.Velocity * _0x162D.Prediction * _0x5C1A
+end
+function _0x162D.Update(DeltaTime)
+local _0x50EF = _0x9AAD.CurrentCamera
+if not _0x162D.Enabled or not _0x50EF then
+_0x162D.Target = nil
+_0x162D.VelocityTarget = nil
+if _0x162D.Circle then
+_0x162D.Circle.Visible = false
+end
+return
+end
+_0x162D.UpdateFOV(_0x50EF)
+local _0x78F4 = os.clock()
+local _0x2FB0 = _0x162D.GetTarget(_0x50EF, _0x78F4)
+if not _0x2FB0 then
+_0x162D.VelocityTarget = nil
+return
+end
+local _0xF853 = _0x162D.GetAimPosition(_0x2FB0, DeltaTime)
+local _0xDBD7, _0x58CE = _0x50EF:WorldToViewportPoint(_0xF853)
+local _0x0394 = _0x50EF.ViewportSize / 2
+local _0x8C00 = (Vector2.new(_0xDBD7.X, _0xDBD7.Y) - _0x0394).Magnitude
+if _0xDBD7.Z <= 0 and not _0x162D.Sticky then return end
+if _0x8C00 > _0x162D.Deadzone then
+local _0xE698 = _0x162D.Sticky and 1 or 1 - (1 - _0x162D.Smooth) ^ (math.min(DeltaTime, 0.1) * 60)
+local _0x12F4 = CFrame.lookAt(_0x50EF.CFrame.Position, _0xF853)
+_0x50EF.CFrame = _0x50EF.CFrame:Lerp(_0x12F4, _0xE698)
+end
+if _0x58CE and _0xDBD7.Z > 0 and _0x8C00 <= _0x162D.FireRadius then
+if _0x78F4 - _0x162D.FireVisibleAt >= 0.05 then
+_0x162D.FireVisibleAt = _0x78F4
+_0x162D.FireVisible = _0x162D.IsVisible(_0x2FB0, _0x2FB0.Parent)
+end
+if _0x162D.FireVisible then
+_0x162D.Click()
+end
+end
+end
+function _0x162D.Bind()
+pcall(function()
+_0xA3CC:UnbindFromRenderStep(string.char(77,101,111,119,65,105,109,98,111,116))
+end)
+_0xA3CC:BindToRenderStep(string.char(77,101,111,119,65,105,109,98,111,116), Enum.RenderPriority.Camera.Value + 1, _0x162D.Update)
+end
+function _0x162D.Unbind()
+pcall(function()
+_0xA3CC:UnbindFromRenderStep(string.char(77,101,111,119,65,105,109,98,111,116))
+end)
+end
+function _0x162D.SetEnabled(_0x22A7)
+_0x162D.Enabled = _0x22A7
+_0x162D.Target = nil
+_0x162D.VelocityTarget = nil
+if _0x22A7 then
+_0x162D.CreateFOV()
+_0x162D.Bind()
+else
+_0x162D.Unbind()
+if _0x162D.Circle then
+_0x162D.Circle.Visible = false
+end
+end
+end
+local _0xFFDE = {
+Enabled = false,
+MaxDistance = 2000,
+_0xCD59 = Color3.fromRGB(255, 255, 255),
+VampireColor = Color3.fromRGB(255, 0, 0),
+ShowName = true,
+ShowDistance = true,
+ShowStreak = true,
+ShowHealth = true,
+ShowBox = true,
+HighlightVampire = true,
+BoxColor = Color3.fromRGB(255, 255, 255),
+BoxThickness = 1,
+BoxRatio = 0.5,
+Up = 2.8,
+Down = 3,
+_0x5EB0 = 5,
+BarThickness = 2,
+BarGap = 1,
+Version = 0,
+Entries = {},
+}
+function _0xFFDE.Add(_0x99F6)
+if _0x99F6 == _0x9AFC or _0xFFDE.Entries[_0x99F6] then
+return
+end
+_0xFFDE.Entries[_0x99F6] = {
+_0x4AC1 = nil,
+_0x9AE5 = nil,
+_0xCCEC = nil,
+StreakObj = nil,
+StreakAt = 0,
+_0xD815 = nil,
+_0x40D5 = nil,
+TextShown = false,
+TextColor = nil,
+_0xEFB9 ="",
+LabelDirty = false,
+_0x2A0F = -1,
+Version = -1,
+_0xDCD2 = nil,
+BarShown = nil,
+HealthKey = -1,
+_0xAB67 = nil,
+BoxOutline = nil,
+BoxShown = false,
+Wake = 0,
+}
+end
+function _0xFFDE.FreeText(_0xBEF8)
+local _0x40D5 = _0xBEF8.Text
+if _0x40D5 then
+_0x5ECA.ReleaseText(_0x40D5)
+_0xBEF8.Text = nil
+_0xBEF8.TextShown = false
+_0xBEF8.TextColor = nil
+_0xBEF8.Label =""_0xBEF8.Dist = -1
+_0xBEF8.Version = -1
+end
+end
+function _0xFFDE.FreeBars(_0xBEF8)
+local _0xDCD2 = _0xBEF8.Bars
+if _0xDCD2 then
+for _0x9C48 = 1, #_0xDCD2 do
+_0x5ECA.ReleaseSquare(_0xDCD2[_0x9C48])
+end
+_0xBEF8.Bars = nil
+_0xBEF8.BarShown = nil
+_0xBEF8.HealthKey = -1
+end
+end
+function _0xFFDE.FreeBox(_0xBEF8)
+if _0xBEF8.Box then
+_0x5ECA.Remove(_0xBEF8.Box)
+_0xBEF8.Box = nil
+end
+if _0xBEF8.BoxOutline then
+_0x5ECA.Remove(_0xBEF8.BoxOutline)
+_0xBEF8.BoxOutline = nil
+end
+_0xBEF8.BoxShown = false
+end
+function _0xFFDE.Free(_0xBEF8)
+_0xFFDE.FreeText(_0xBEF8)
+_0xFFDE.FreeBars(_0xBEF8)
+_0xFFDE.FreeBox(_0xBEF8)
+end
+function _0xFFDE.RemovePlayer(_0x99F6)
+local _0xBEF8 = _0xFFDE.Entries[_0x99F6]
+if _0xBEF8 then
+_0xFFDE.Free(_0xBEF8)
+_0xFFDE.Entries[_0x99F6] = nil
+end
+end
+function _0xFFDE.Hide(_0xBEF8)
+if _0xBEF8.TextShown then
+_0xBEF8.Text.Visible = false
+_0xBEF8.TextShown = false
+end
+if _0xBEF8.BoxShown then
+if _0xBEF8.Box then
+_0xBEF8.Box.Visible = false
+end
+if _0xBEF8.BoxOutline then
+_0xBEF8.BoxOutline.Visible = false
+end
+_0xBEF8.BoxShown = false
+end
+local _0xE198 = _0xBEF8.BarShown
+if _0xE198 then
+local _0xDCD2 = _0xBEF8.Bars
+for _0x9C48 = 1, #_0xDCD2 do
+if _0xE198[_0x9C48] then
+_0xDCD2[_0x9C48].Visible = false
+_0xE198[_0x9C48] = false
+end
+end
+end
+end
+function _0xFFDE.SetEnabled(_0x22A7)
+_0xFFDE.Enabled = _0x22A7
+if not _0x22A7 then
+for _, _0xBEF8 in pairs(_0xFFDE.Entries) do
+_0xFFDE.Free(_0xBEF8)
+_0xBEF8.Wake = 0
+end
+end
+end
+function _0xFFDE.Bump()
+_0xFFDE.Version += 1
+end
+function _0xFFDE.EnsureBars(_0xBEF8)
+if _0xBEF8.Bars then
+return true
+end
+local _0xDCD2 = {}
+local _0xE198 = {}
+for _0x9C48 = 1, _0xFFDE.Segments do
+local _0x79C4 = _0x5ECA.AcquireSquare(Color3.fromRGB(0, 255, 0))
+if not _0x79C4 then
+for Made = 1, #_0xDCD2 do
+_0x5ECA.ReleaseSquare(_0xDCD2[Made])
+end
+return false
+end
+_0xDCD2[_0x9C48] = _0x79C4
+_0xE198[_0x9C48] = false
+end
+_0xBEF8.Bars = _0xDCD2
+_0xBEF8.BarShown = _0xE198
+_0xBEF8.HealthKey = -1
+return true
+end
+function _0xFFDE.Bind(_0xBEF8, _0x4AC1)
+_0xBEF8.Character = _0x4AC1
+_0xBEF8.Root = _0x4AC1 and _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116)) or nil
+_0xBEF8.Humanoid = _0x4AC1 and _0x4AC1:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100)) or nil
+end
+function _0xFFDE.GetStreak(_0x99F6, _0xBEF8, _0x78F4)
+local _0x8544 = _0xBEF8.StreakObj
+if not _0x8544 or not _0x8544.Parent then
+if _0x78F4 < _0xBEF8.StreakAt then
+return nil
+end
+_0xBEF8.StreakAt = _0x78F4 + 1
+local _0x8FDD = _0x99F6:FindFirstChild(string.char(108,101,97,100,101,114,115,116,97,116,115))
+local _0xD815 = _0x8FDD and _0x8FDD:FindFirstChild(string.char(83,84,82,69,65,75))
+_0x8544 = _0xD815 and _0xD815:IsA(string.char(86,97,108,117,101,66,97,115,101)) and _0xD815 or nil
+_0xBEF8.StreakObj = _0x8544
+end
+if _0x8544 then
+return _0x8544.Value
+end
+return nil
+end
+function _0xFFDE.BuildLabel(_0xA86B, _0x2A0F, _0xD815)
+local _0xEFB9 =""if _0xFFDE.ShowName then
+_0xEFB9 = _0xA86B
+end
+if _0xFFDE.ShowDistance then
+local _0xBFD8 =string.char(91).. _0x2A0F ..string.char(32,115,116,117,100,115,93)_0xEFB9 = _0xEFB9 ==""and _0xBFD8 or (_0xEFB9 ..string.char(32).. _0xBFD8)
+end
+if _0xFFDE.ShowStreak and _0xD815 ~= nil then
+local _0xBFD8 =string.char(91,83,116,114,101,97,107,58,32).. tostring(_0xD815) ..string.char(93)_0xEFB9 = _0xEFB9 ==""and _0xBFD8 or (_0xEFB9 ..string.char(32).. _0xBFD8)
+end
+return _0xEFB9
+end
+function _0xFFDE.Step(_0x0957, _0xB14F, _0x78F4, _0x99F6, _0xBEF8)
+local _0x4AC1 = _0x99F6.Character
+local _0x9AE5 = _0xBEF8.Root
+if _0x4AC1 ~= _0xBEF8.Character or not _0x9AE5 or not _0x9AE5.Parent then
+_0xFFDE.Bind(_0xBEF8, _0x4AC1)
+_0x9AE5 = _0xBEF8.Root
+end
+if not _0x9AE5 then
+_0xFFDE.Hide(_0xBEF8)
+_0xBEF8.Wake = _0x78F4 + 0.25
+return
+end
+local _0xBFC2 = _0x9AE5.Position
+local _0x8C00 = (_0xB14F - _0xBFC2).Magnitude
+if _0x8C00 > _0xFFDE.MaxDistance then
+_0xFFDE.Free(_0xBEF8)
+_0xBEF8.Wake = _0x78F4 + 0.5
+return
+end
+local _0xC371, _0x2990 = _0x0957:WorldToViewportPoint(_0xBFC2 + Vector3.new(0, _0xFFDE.Up, 0))
+local _0xBE61, _0xC775 = _0x0957:WorldToViewportPoint(_0xBFC2 - Vector3.new(0, _0xFFDE.Down, 0))
+local _0x8F0B = _0xBE61.Y - _0xC371.Y
+if _0xC371.Z <= 0 or _0xBE61.Z <= 0 or _0x8F0B <= 0 or not (_0x2990 or _0xC775) then
+_0xFFDE.Hide(_0xBEF8)
+return
+end
+local _0x958F = _0x8F0B * _0xFFDE.BoxRatio
+local _0x0E76 = _0xFFDE.HighlightVampire and _0x4AC1:GetAttribute(string.char(86,97,109,112,105,114,101)) == true
+if _0xFFDE.ShowBox then
+if not _0xBEF8.Box or not _0xBEF8.BoxOutline then
+_0xFFDE.FreeBox(_0xBEF8)
+_0xBEF8.BoxOutline = _0x5ECA.NewBox(Color3.new(0, 0, 0), _0xFFDE.BoxThickness + 2, 1)
+_0xBEF8.Box = _0x5ECA.NewBox(_0xFFDE.BoxColor, _0xFFDE.BoxThickness, 2)
+if not _0xBEF8.Box or not _0xBEF8.BoxOutline then
+_0xFFDE.FreeBox(_0xBEF8)
+end
+end
+local _0xAB67 = _0xBEF8.Box
+local _0x513F = _0xBEF8.BoxOutline
+if _0xAB67 and _0x513F then
+local _0x2C61 = Vector2.new(_0xC371.X - _0x958F / 2, _0xC371.Y)
+local _0x10FF = Vector2.new(_0x958F, _0x8F0B)
+_0xAB67.Position = _0x2C61
+_0xAB67.Size = _0x10FF
+_0xAB67.Color = _0x0E76 and _0xFFDE.VampireColor or _0xFFDE.BoxColor
+_0xAB67.Thickness = _0xFFDE.BoxThickness
+_0x513F.Position = _0x2C61
+_0x513F.Size = _0x10FF
+_0x513F.Thickness = _0xFFDE.BoxThickness + 2
+if not _0xBEF8.BoxShown then
+_0xAB67.Visible = true
+_0x513F.Visible = true
+_0xBEF8.BoxShown = true
+end
+end
+elseif _0xBEF8.Box or _0xBEF8.BoxOutline then
+_0xFFDE.FreeBox(_0xBEF8)
+end
+local _0xD815 = _0xFFDE.ShowStreak and _0xFFDE.GetStreak(_0x99F6, _0xBEF8, _0x78F4) or nil
+local _0x2A0F = math.floor(_0x8C00)
+if _0xBEF8.Dist ~= _0x2A0F or _0xBEF8.Streak ~= _0xD815 or _0xBEF8.Version ~= _0xFFDE.Version then
+_0xBEF8.Dist = _0x2A0F
+_0xBEF8.Streak = _0xD815
+_0xBEF8.Version = _0xFFDE.Version
+_0xBEF8.Label = _0xFFDE.BuildLabel(_0x99F6.Name, _0x2A0F, _0xD815)
+_0xBEF8.LabelDirty = true
+end
+if _0xBEF8.Label ~=""then
+local _0x40D5 = _0xBEF8.Text
+if not _0x40D5 then
+_0x40D5 = _0x5ECA.AcquireText(_0xFFDE.Color)
+_0xBEF8.Text = _0x40D5
+_0xBEF8.TextColor = nil
+_0xBEF8.LabelDirty = true
+end
+if _0x40D5 then
+if _0xBEF8.LabelDirty then
+_0x40D5.Text = _0xBEF8.Label
+_0xBEF8.LabelDirty = false
+end
+local _0xCD59 = _0x0E76 and _0xFFDE.VampireColor or _0xFFDE.Color
+if _0xBEF8.TextColor ~= _0xCD59 then
+_0x40D5.Color = _0xCD59
+_0xBEF8.TextColor = _0xCD59
+end
+_0x40D5.Position = Vector2.new(_0xC371.X, _0xC371.Y - 18)
+if not _0xBEF8.TextShown then
+_0x40D5.Visible = true
+_0xBEF8.TextShown = true
+end
+end
+elseif _0xBEF8.TextShown then
+_0xBEF8.Text.Visible = false
+_0xBEF8.TextShown = false
+end
+if _0xFFDE.ShowHealth then
+local _0xCCEC = _0xBEF8.Humanoid
+if not _0xCCEC or not _0xCCEC.Parent then
+_0xCCEC = _0x4AC1:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))
+_0xBEF8.Humanoid = _0xCCEC
+end
+local _0xFD11 = 0
+if _0xCCEC then
+local _0x71C2 = _0xCCEC.MaxHealth
+if _0x71C2 > 0 then
+_0xFD11 = math.clamp(_0xCCEC.Health / _0x71C2, 0, 1)
+end
+end
+if _0xFFDE.EnsureBars(_0xBEF8) then
+local _0x5EB0 = _0xFFDE.Segments
+local _0x2E55 = _0x8F0B > 30 and _0xFFDE.BarGap or 0
+local _0xE3F3 = (_0x8F0B - _0x2E55 * (_0x5EB0 - 1)) / _0x5EB0
+local _0xC306 = _0xFFDE.BarThickness
+local _0xC08D = _0xC371.X - _0x958F / 2 - _0xC306 - 4
+local _0x2278 = math.floor(_0xFD11 * 50)
+local _0x1BF8 = _0xBEF8.HealthKey ~= _0x2278
+local _0xCD59 = nil
+if _0x1BF8 then
+_0xBEF8.HealthKey = _0x2278
+_0xCD59 = Color3.fromHSV(_0xFD11 * 0.33, 1, 1)
+end
+local _0xDCD2 = _0xBEF8.Bars
+local _0xE198 = _0xBEF8.BarShown
+for _0x9C48 = 1, _0x5EB0 do
+local _0x79C4 = _0xDCD2[_0x9C48]
+local _0xA5CC = math.clamp(_0xFD11 * _0x5EB0 - (_0x9C48 - 1), 0, 1)
+if _0xA5CC > 0 then
+local _0xDBCB = math.max(_0xE3F3 * _0xA5CC, 1)
+local _0xBD41 = _0xBE61.Y - (_0x9C48 - 1) * (_0xE3F3 + _0x2E55)
+_0x79C4.Size = Vector2.new(_0xC306, _0xDBCB)
+_0x79C4.Position = Vector2.new(_0xC08D, _0xBD41 - _0xDBCB)
+if _0x1BF8 then
+_0x79C4.Color = _0xCD59
+end
+if not _0xE198[_0x9C48] then
+_0x79C4.Visible = true
+_0xE198[_0x9C48] = true
+end
+elseif _0xE198[_0x9C48] then
+_0x79C4.Visible = false
+_0xE198[_0x9C48] = false
+end
+end
+else
+_0xBEF8.Wake = _0x78F4 + 1
+end
+elseif _0xBEF8.Bars then
+_0xFFDE.FreeBars(_0xBEF8)
+end
+end
+function _0xFFDE.Update(_0x0957, _0xB14F, _0x78F4)
+if not _0xFFDE.Enabled then return end
+for _0x99F6, _0xBEF8 in pairs(_0xFFDE.Entries) do
+if _0x78F4 >= _0xBEF8.Wake then
+_0xFFDE.Step(_0x0957, _0xB14F, _0x78F4, _0x99F6, _0xBEF8)
+end
+end
+end
+local _0x0E93 = {
+Enabled = false,
+RunId = 0,
+Cooldown = 2,
+PlayerDistance = 1000,
+IdleHeight = 5000,
+IdleCFrame = nil,
+IdleRoot = nil,
+_0x25F2 = nil,
+_0x1770 = {},
+Set = {},
+Prompts = {},
+PromptAt = {},
+Added = nil,
+Removed = nil,
+}
+local _0xC39D = {
+Selected = nil,
+_0x0AF7 = {},
+_0x7C63 = {},
+Added = nil,
+Removed = nil,
+StartId = 0,
+Pending = false,
+PlayerDistance = 1000,
+RefreshRate = 1,
+}
+function _0xC39D.GetFolder()
+local _0x0F3D = _0x9AAD:FindFirstChild(string.char(77,97,112))
+local _0xDF98 = _0x0F3D and _0x0F3D:FindFirstChild(string.char(68,101,115,116,114,117,99,116,105,98,108,101,115))
+return _0xDF98 and _0xDF98:FindFirstChild(string.char(83,97,102,101,115))
+end
+function _0x0E93.GetHorseRoot()
+local _0xECC4 = _0x9AAD:FindFirstChild(string.char(69,110,116,105,116,105,101,115))
+local _0xF2B5 = _0xECC4 and _0xECC4:FindFirstChild(_0x9AFC.Name)
+local _0xB1C3 = _0xF2B5 and _0xF2B5:FindFirstChild(string.char(82,105,100,105,110,103,72,111,114,115,101))
+if not _0xB1C3 or not _0xB1C3:IsA(string.char(79,98,106,101,99,116,86,97,108,117,101)) then
+return nil
+end
+local _0xBC5E = _0xB1C3.Value
+if typeof(_0xBC5E) ~=string.char(73,110,115,116,97,110,99,101)or not _0xBC5E.Parent then
+return nil
+end
+return _0xBC5E:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+end
+local _0x788A = _0xD8C7.new({
+MaxDistance = 3000,
+_0xCD59 = Color3.fromRGB(120, 200, 255),
+Resolve = function()
+return _0x9AAD:FindFirstChild(string.char(78,80,67))
+end,
+})
+local _0x3C17 = _0xD8C7.new({
+MaxDistance = 3000,
+_0xCD59 = Color3.fromRGB(0, 255, 0),
+Resolve = function()
+return _0x9AAD:FindFirstChild(string.char(69,110,116,105,116,105,101,115))
+end,
+Accept = function(Instance)
+return _0x5ECA.IsTarget(Instance) and _0xE5A5:FindFirstChild(Instance.Name) == nil
+end,
+})
+local _0x8456 = _0xD8C7.new({
+MaxDistance = 5000,
+_0xCD59 = Color3.fromRGB(255, 200, 0),
+Resolve = function()
+return _0x9AAD
+end,
+Deep = true,
+_0x86B2 = 0,
+_0xFD27 = 0.5,
+Accept = function(Instance)
+if not _0x0978[Instance.ClassName] then
+return false
+end
+local _0xA86B = string.lower(Instance.Name)
+for _, Pattern in ipairs(_0xACEB) do
+if string.find(_0xA86B, Pattern, 1, true) then
+return true
+end
+end
+return false
+end,
+})
+local _0x3D1A = _0xD8C7.new({
+MaxDistance = 5000,
+_0xCD59 = Color3.fromRGB(255, 170, 0),
+_0xFD27 = 2,
+Resolve = function()
+return _0x9AAD:FindFirstChild(string.char(79,114,101,78,111,100,101,115))
+end,
+})
+local _0xACA9 = _0xD8C7.new({
+MaxDistance = 5000,
+_0xCD59 = Color3.fromRGB(0, 200, 255),
+_0x100A =string.char(83,97,102,101),
+_0xFD27 = 2,
+Resolve = _0xC39D.GetFolder,
+})
+local _0x9165 = _0xD8C7.new({
+MaxDistance = 5000,
+_0xCD59 = Color3.fromRGB(255, 105, 180),
+_0x100A =string.char(67,104,101,115,116),
+Deep = true,
+_0xFD27 = 2,
+Resolve = function()
+return _0x9AAD:FindFirstChild(string.char(67,104,101,115,116,115))
+end,
+Accept = function(Instance)
+return Instance.Name ==string.char(67,104,101,115,116,66,111,120)and Instance:IsA(string.char(77,111,100,101,108))
+end,
+})
+local _0x4862 = { _0x788A, _0x3C17, _0x8456, _0x3D1A, _0xACA9, _0x9165 }
+local _0xE6E1 = {
+Enabled = false,
+_0xCFA4 = 1,
+_0xBC5E = nil,
+Original = nil,
+ScanRate = 1,
+LastScan = 0,
+Connection = nil,
+}
+local _0xE375 = {
+Enabled = false,
+_0xCFA4 = 60,
+_0xE4AF = nil,
+_0x9AE5 = nil,
+Connection = nil,
+}
+local _0xCEE6 = {
+Selected = nil,
+_0x2848 = {},
+}
+local _0xED31 = {
+Selected = nil,
+_0x2848 = {},
+_0x0AF7 = {},
+}
+function _0xE6E1.IsOwner(_0x7B0C)
+if not _0x7B0C:IsA(string.char(86,97,108,117,101,66,97,115,101)) then return false end
+local _0x22A7 = _0x7B0C.Value
+if typeof(_0x22A7) ==string.char(73,110,115,116,97,110,99,101)then
+return _0x22A7 == _0x9AFC or _0x22A7.Name == _0x9AFC.Name
+end
+if type(_0x22A7) ==string.char(115,116,114,105,110,103)then
+return _0x22A7 == _0x9AFC.Name
+end
+return false
+end
+function _0xE6E1.Find()
+local _0xECC4 = _0x9AAD:FindFirstChild(string.char(69,110,116,105,116,105,101,115))
+if not _0xECC4 then return nil end
+for _, Mob in ipairs(_0xECC4:GetChildren()) do
+local _0x7B0C = Mob:FindFirstChild(string.char(79,119,110,101,114), true)
+if _0x7B0C and _0xE6E1.IsOwner(_0x7B0C) then
+return Mob
+end
+end
+return nil
+end
+function _0xE6E1.Restore()
+local _0xBC5E = _0xE6E1.Horse
+if _0xBC5E and _0xBC5E.Parent and _0xE6E1.Original ~= nil then
+pcall(function()
+_0xBC5E:SetAttribute(string.char(83,116,97,116,95,83,112,101,101,100), _0xE6E1.Original)
+end)
+end
+_0xE6E1.Original = nil
+end
+function _0xE6E1.Select(_0xBC5E)
+if _0xBC5E == _0xE6E1.Horse then return end
+_0xE6E1.Restore()
+_0xE6E1.Horse = _0xBC5E
+if _0xBC5E then
+_0x5ECA.Notify(string.char(72,111,114,115,101,32,102,111,117,110,100,58,32).. _0xBC5E.Name)
+end
+end
+function _0xE6E1.Apply()
+local _0xBC5E = _0xE6E1.Horse
+if not _0xBC5E or not _0xBC5E.Parent then return end
+local _0x7C63 = _0xBC5E:GetAttribute(string.char(83,116,97,116,95,83,112,101,101,100))
+if _0x7C63 == nil then return end
+if _0xE6E1.Original == nil then
+_0xE6E1.Original = _0x7C63
+end
+if _0x7C63 ~= _0xE6E1.Speed then
+_0xBC5E:SetAttribute(string.char(83,116,97,116,95,83,112,101,101,100), _0xE6E1.Speed)
+end
+end
+function _0xE6E1.Update()
+if not _0xE6E1.Enabled then return end
+local _0x78F4 = os.clock()
+local _0xBC5E = _0xE6E1.Horse
+if (not _0xBC5E or not _0xBC5E.Parent) and _0x78F4 - _0xE6E1.LastScan >= _0xE6E1.ScanRate then
+_0xE6E1.LastScan = _0x78F4
+_0xE6E1.Horse = nil
+_0xE6E1.Original = nil
+_0xE6E1.Select(_0xE6E1.Find())
+end
+_0xE6E1.Apply()
+end
+function _0xE6E1.SetEnabled(_0x22A7)
+_0xE6E1.Enabled = _0x22A7
+if _0x22A7 then
+_0xE6E1.LastScan = 0
+_0x5ECA.Connect(_0xE6E1, _0xA3CC.Heartbeat, _0xE6E1.Update)
+else
+_0x5ECA.Disconnect(_0xE6E1)
+_0xE6E1.Restore()
+_0xE6E1.Horse = nil
+end
+end
+function _0xE375.Destroy()
+if _0xE375.Velocity then
+pcall(function()
+_0xE375.Velocity:Destroy()
+end)
+end
+_0xE375.Velocity = nil
+_0xE375.Root = nil
+end
+function _0xE375.Attach(_0x9AE5)
+_0xE375.Destroy()
+local _0xE4AF = Instance.new(string.char(66,111,100,121,86,101,108,111,99,105,116,121))
+_0xE4AF.Name =string.char(77,101,111,119,72,111,114,115,101,70,108,121)_0xE4AF.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+_0xE4AF.Velocity = Vector3.zero
+_0xE4AF.Parent = _0x9AE5
+_0xE375.Velocity = _0xE4AF
+_0xE375.Root = _0x9AE5
+end
+function _0xE375.GetDirection()
+local _0x50EF = _0x9AAD.CurrentCamera
+local _0x1D02 = _0xEF5E.UserInputService
+if not _0x50EF or _0x1D02:GetFocusedTextBox() then
+return Vector3.zero
+end
+local _0x2726 = _0x50EF.CFrame.LookVector
+local _0xDF10 = _0x50EF.CFrame.RightVector
+local _0x8861 = Vector3.zero
+if _0x1D02:IsKeyDown(Enum.KeyCode.W) then
+_0x8861 += _0x2726
+end
+if _0x1D02:IsKeyDown(Enum.KeyCode.S) then
+_0x8861 -= _0x2726
+end
+if _0x1D02:IsKeyDown(Enum.KeyCode.D) then
+_0x8861 += _0xDF10
+end
+if _0x1D02:IsKeyDown(Enum.KeyCode.A) then
+_0x8861 -= _0xDF10
+end
+if _0x1D02:IsKeyDown(Enum.KeyCode.Space) then
+_0x8861 += Vector3.yAxis
+end
+if _0x1D02:IsKeyDown(Enum.KeyCode.LeftControl) or _0x1D02:IsKeyDown(Enum.KeyCode.LeftShift) then
+_0x8861 -= Vector3.yAxis
+end
+return _0x8861
+end
+function _0xE375.Update()
+if not _0xE375.Enabled then return end
+local _0x9AE5 = _0x0E93.GetHorseRoot()
+if not _0x9AE5 then
+_0xE375.Destroy()
+return
+end
+if _0xE375.Root ~= _0x9AE5 or not _0xE375.Velocity or _0xE375.Velocity.Parent ~= _0x9AE5 then
+_0xE375.Attach(_0x9AE5)
+end
+local _0x8861 = _0xE375.GetDirection()
+_0xE375.Velocity.Velocity = _0x8861.Magnitude > 0 and _0x8861.Unit * _0xE375.Speed or Vector3.zero
+end
+function _0xE375.SetEnabled(_0x22A7)
+_0xE375.Enabled = _0x22A7
+if _0x22A7 then
+_0x5ECA.Connect(_0xE375, _0xA3CC.Heartbeat, _0xE375.Update)
+else
+_0x5ECA.Disconnect(_0xE375)
+_0xE375.Destroy()
+end
+end
+function _0xCEE6.Refresh()
+local _0x2848 = {}
+for _, _0x99F6 in ipairs(_0xE5A5:GetPlayers()) do
+if _0x99F6 ~= _0x9AFC then
+table.insert(_0x2848, _0x99F6.Name)
+end
+end
+table.sort(_0x2848)
+_0xCEE6.Values = _0x2848
+pcall(function()
+_0x4FF5.Options.TPPlayerDropdown:SetValues(_0x2848)
+end)
+if _0xCEE6.Selected and not table.find(_0x2848, _0xCEE6.Selected) then
+_0xCEE6.Selected = nil
+end
+if not _0xCEE6.Selected and #_0x2848 > 0 then
+_0xCEE6.Selected = _0x2848[1]
+pcall(function()
+_0x4FF5.Options.TPPlayerDropdown:SetValue(_0xCEE6.Selected)
+end)
+end
+end
+function _0xCEE6.Teleport()
+local _0x5C6A = _0xCEE6.Selected
+if not _0x5C6A or _0x5C6A ==""then
+_0x5ECA.Notify(string.char(83,101,108,101,99,116,32,97,32,112,108,97,121,101,114,32,102,105,114,115,116,46))
+return
+end
+local _0x15DB = _0xE5A5:FindFirstChild(_0x5C6A)
+if not _0x15DB or _0x15DB == _0x9AFC then
+_0x5ECA.Notify(string.char(83,101,108,101,99,116,101,100,32,112,108,97,121,101,114,32,105,115,32,117,110,97,118,97,105,108,97,98,108,101,46))
+_0xCEE6.Refresh()
+return
+end
+local _0xBD32 = _0x15DB.Character
+local _0x8DDC = _0xBD32 and _0xBD32:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+if not _0x8DDC then
+_0x5ECA.Notify(string.char(84,97,114,103,101,116,32,112,108,97,121,101,114,32,99,104,97,114,97,99,116,101,114,32,105,115,32,110,111,116,32,108,111,97,100,101,100,46))
+return
+end
+local _0x961B = _0x0E93.GetHorseRoot()
+if not _0x961B then
+_0x5ECA.Notify(string.char(89,111,117,114,32,104,111,114,115,101,32,119,97,115,32,110,111,116,32,102,111,117,110,100,46,32,77,111,117,110,116,32,121,111,117,114,32,104,111,114,115,101,32,102,105,114,115,116,46))
+return
+end
+local _0xBB3F = _0x8DDC.CFrame * CFrame.new(0, 0, 5)
+local _0xFBE2 = pcall(function()
+_0x961B.CFrame = _0xBB3F
+_0x961B.AssemblyLinearVelocity = Vector3.zero
+_0x961B.AssemblyAngularVelocity = Vector3.zero
+end)
+if _0xFBE2 then
+_0x5ECA.Notify(string.char(84,101,108,101,112,111,114,116,101,100,32,104,111,114,115,101,32,116,111,32).. _0x15DB.Name ..string.char(46))
+else
+_0x5ECA.Notify(string.char(67,111,117,108,100,32,110,111,116,32,116,101,108,101,112,111,114,116,32,116,104,101,32,104,111,114,115,101,46))
+end
+end
+function _0xED31.Refresh()
+local _0x25F2 = _0x9AAD:FindFirstChild(string.char(78,80,67))
+local _0x2848 = {}
+local _0x0AF7 = {}
+local _0xF774 = {}
+if _0x25F2 then
+for _, _0xCCA0 in ipairs(_0x25F2:GetChildren()) do
+if _0xCCA0:IsA(string.char(77,111,100,101,108)) or _0xCCA0:IsA(string.char(66,97,115,101,80,97,114,116)) then
+_0xF774[_0xCCA0.Name] = (_0xF774[_0xCCA0.Name] or 0) + 1
+local _0xEFB9 = _0xCCA0.Name
+if _0xF774[_0xCCA0.Name] > 1 then
+_0xEFB9 = _0xCCA0.Name ..string.char(32,40).. _0xF774[_0xCCA0.Name] ..string.char(41)end
+_0x0AF7[_0xEFB9] = _0xCCA0
+table.insert(_0x2848, _0xEFB9)
+end
+end
+end
+table.sort(_0x2848)
+_0xED31.Values = _0x2848
+_0xED31.Map = _0x0AF7
+pcall(function()
+_0x4FF5.Options.TPNpcDropdown:SetValues(_0x2848)
+end)
+if _0xED31.Selected and not _0x0AF7[_0xED31.Selected] then
+_0xED31.Selected = nil
+end
+if not _0xED31.Selected and #_0x2848 > 0 then
+_0xED31.Selected = _0x2848[1]
+pcall(function()
+_0x4FF5.Options.TPNpcDropdown:SetValue(_0xED31.Selected)
+end)
+end
+end
+function _0xED31.Teleport()
+local _0xEFB9 = _0xED31.Selected
+if not _0xEFB9 or _0xEFB9 ==""then
+_0x5ECA.Notify(string.char(83,101,108,101,99,116,32,97,110,32,78,80,67,32,102,105,114,115,116,46))
+return
+end
+local _0xCCA0 = _0xED31.Map[_0xEFB9]
+if not _0xCCA0 or not _0xCCA0.Parent then
+_0x5ECA.Notify(string.char(83,101,108,101,99,116,101,100,32,78,80,67,32,105,115,32,117,110,97,118,97,105,108,97,98,108,101,46))
+_0xED31.Refresh()
+return
+end
+local _0x84AF = _0x5ECA.GetCFrame(_0xCCA0)
+if not _0x84AF then
+_0x5ECA.Notify(string.char(67,111,117,108,100,32,110,111,116,32,108,111,99,97,116,101,32,116,104,101,32,78,80,67,46))
+return
+end
+local _0x961B = _0x0E93.GetHorseRoot()
+if not _0x961B then
+_0x5ECA.Notify(string.char(89,111,117,114,32,104,111,114,115,101,32,119,97,115,32,110,111,116,32,102,111,117,110,100,46,32,77,111,117,110,116,32,121,111,117,114,32,104,111,114,115,101,32,102,105,114,115,116,46))
+return
+end
+local _0xBB3F = _0x84AF * CFrame.new(0, 0, 5)
+local _0xFBE2 = pcall(function()
+_0x961B.CFrame = _0xBB3F
+_0x961B.AssemblyLinearVelocity = Vector3.zero
+_0x961B.AssemblyAngularVelocity = Vector3.zero
+end)
+if _0xFBE2 then
+_0x5ECA.Notify(string.char(84,101,108,101,112,111,114,116,101,100,32,104,111,114,115,101,32,116,111,32).. _0xEFB9 ..string.char(46))
+else
+_0x5ECA.Notify(string.char(67,111,117,108,100,32,110,111,116,32,116,101,108,101,112,111,114,116,32,116,104,101,32,104,111,114,115,101,46))
+end
+end
+function _0xC39D.IsAvailable(Safe)
+if not Safe or not Safe.Parent then
+return false
+end
+local _0xBFC2 = _0x5ECA.GetPosition(Safe)
+if not _0xBFC2 then
+return false
+end
+return not _0x5ECA.HasNearbyPlayer(_0xBFC2, _0xC39D.PlayerDistance)
+end
+function _0xC39D.SameList(_0x1770)
+local _0x7C63 = _0xC39D.Current
+if #_0x1770 ~= #_0x7C63 then
+return false
+end
+for _0x9C48 = 1, #_0x1770 do
+if _0x1770[_0x9C48] ~= _0x7C63[_0x9C48] then
+return false
+end
+end
+return true
+end
+function _0xC39D.Refresh()
+local _0x25F2 = _0xC39D.GetFolder()
+local _0x1770 = {}
+if _0x25F2 then
+for _, Safe in ipairs(_0x25F2:GetChildren()) do
+if _0x5ECA.IsTarget(Safe) and _0xC39D.IsAvailable(Safe) then
+table.insert(_0x1770, Safe)
+end
+end
+end
+if _0xC39D.SameList(_0x1770) then
+return
+end
+local _0x2848 = {}
+local _0x0AF7 = {}
+local _0xB8A4 = nil
+for _0x9C48, Safe in ipairs(_0x1770) do
+local _0xEFB9 =string.char(83,97,102,101,32,35).. _0x9C48
+_0x0AF7[_0xEFB9] = Safe
+table.insert(_0x2848, _0xEFB9)
+if Safe == _0xC39D.Selected then
+_0xB8A4 = _0xEFB9
+end
+end
+_0xC39D.Current = _0x1770
+_0xC39D.Map = _0x0AF7
+pcall(function()
+_0x4FF5.Options.TPSafeDropdown:SetValues(_0x2848)
+end)
+if not _0xB8A4 and #_0x2848 > 0 then
+_0xB8A4 = _0x2848[1]
+end
+_0xC39D.Selected = _0xB8A4 and _0x0AF7[_0xB8A4] or nil
+if _0xB8A4 then
+pcall(function()
+_0x4FF5.Options.TPSafeDropdown:SetValue(_0xB8A4)
+end)
+end
+end
+function _0xC39D.Schedule()
+if _0xC39D.Pending then return end
+_0xC39D.Pending = true
+task.delay(0.15, function()
+_0xC39D.Pending = false
+_0xC39D.Refresh()
+end)
+end
+function _0xC39D.Start()
+_0xC39D.StartId += 1
+local _0x1F60 = _0xC39D.StartId
+task.spawn(function()
+local _0x25F2 = _0xC39D.GetFolder()
+while not _0x25F2 do
+task.wait(1)
+if _0x1F60 ~= _0xC39D.StartId then return end
+_0x25F2 = _0xC39D.GetFolder()
+end
+if _0x1F60 ~= _0xC39D.StartId then return end
+_0xC39D.Added = _0x25F2.ChildAdded:Connect(_0xC39D.Schedule)
+_0xC39D.Removed = _0x25F2.ChildRemoved:Connect(_0xC39D.Schedule)
+while _0x1F60 == _0xC39D.StartId do
+_0xC39D.Refresh()
+task.wait(_0xC39D.RefreshRate)
+end
+end)
+end
+function _0xC39D.Stop()
+_0xC39D.StartId += 1
+if _0xC39D.Added then
+_0xC39D.Added:Disconnect()
+_0xC39D.Added = nil
+end
+if _0xC39D.Removed then
+_0xC39D.Removed:Disconnect()
+_0xC39D.Removed = nil
+end
+end
+function _0xC39D.TeleportTo(Safe)
+if not Safe or not Safe.Parent then
+_0x5ECA.Notify(string.char(83,97,102,101,32,117,110,97,118,97,105,108,97,98,108,101,46))
+_0xC39D.Refresh()
+return
+end
+local _0x7162 = _0x5ECA.GetCFrame(Safe)
+if not _0x7162 then
+_0x5ECA.Notify(string.char(67,111,117,108,100,32,110,111,116,32,108,111,99,97,116,101,32,116,104,101,32,83,97,102,101,46))
+return
+end
+if _0x5ECA.HasNearbyPlayer(_0x7162.Position, _0xC39D.PlayerDistance) then
+_0x5ECA.Notify(string.char(65,32,112,108,97,121,101,114,32,105,115,32,119,105,116,104,105,110,32).. _0xC39D.PlayerDistance ..string.char(32,115,116,117,100,115,32,111,102,32,116,104,105,115,32,83,97,102,101,46))
+_0xC39D.Refresh()
+return
+end
+local _0x961B = _0x0E93.GetHorseRoot()
+if not _0x961B then
+_0x5ECA.Notify(string.char(89,111,117,114,32,104,111,114,115,101,32,119,97,115,32,110,111,116,32,102,111,117,110,100,46,32,77,111,117,110,116,32,121,111,117,114,32,104,111,114,115,101,32,102,105,114,115,116,46))
+return
+end
+local _0xFBE2 = pcall(function()
+_0x961B.CFrame = CFrame.new(_0x7162.Position + Vector3.new(0, 5, 0))
+_0x961B.AssemblyLinearVelocity = Vector3.zero
+_0x961B.AssemblyAngularVelocity = Vector3.zero
+end)
+_0x5ECA.Notify(_0xFBE2 andstring.char(84,101,108,101,112,111,114,116,101,100,32,104,111,114,115,101,32,116,111,32,116,104,101,32,83,97,102,101,46)orstring.char(67,111,117,108,100,32,110,111,116,32,116,101,108,101,112,111,114,116,32,116,104,101,32,104,111,114,115,101,46))
+end
+function _0xC39D.Teleport()
+_0xC39D.TeleportTo(_0xC39D.Selected)
+end
+function _0xC39D.TeleportNearest()
+local _0x961B = _0x0E93.GetHorseRoot()
+if not _0x961B then
+_0x5ECA.Notify(string.char(89,111,117,114,32,104,111,114,115,101,32,119,97,115,32,110,111,116,32,102,111,117,110,100,46,32,77,111,117,110,116,32,121,111,117,114,32,104,111,114,115,101,32,102,105,114,115,116,46))
+return
+end
+local _0x25F2 = _0xC39D.GetFolder()
+local _0xF6BB = nil
+local _0xD9EA = math.huge
+if _0x25F2 then
+for _, Safe in ipairs(_0x25F2:GetChildren()) do
+local _0xBFC2 = _0x5ECA.GetPosition(Safe)
+if _0xBFC2 and not _0x5ECA.HasNearbyPlayer(_0xBFC2, _0xC39D.PlayerDistance) then
+local _0x8C00 = (_0x961B.Position - _0xBFC2).Magnitude
+if _0x8C00 < _0xD9EA then
+_0xD9EA = _0x8C00
+_0xF6BB = Safe
+end
+end
+end
+end
+if not _0xF6BB then
+_0x5ECA.Notify(string.char(78,111,32,83,97,102,101,32,97,118,97,105,108,97,98,108,101,46))
+return
+end
+_0xC39D.TeleportTo(_0xF6BB)
+end
+function _0x0E93.Track(Instance)
+if Instance.Name ==string.char(67,104,101,115,116,66,111,120)and Instance:IsA(string.char(77,111,100,101,108)) and not _0x0E93.Set[Instance] then
+_0x0E93.Set[Instance] = true
+table.insert(_0x0E93.List, Instance)
+end
+end
+function _0x0E93.Untrack(Instance)
+if _0x0E93.Set[Instance] then
+_0x0E93.Set[Instance] = nil
+_0x0E93.Prompts[Instance] = nil
+_0x0E93.PromptAt[Instance] = nil
+local _0x9C48 = table.find(_0x0E93.List, Instance)
+if _0x9C48 then
+table.remove(_0x0E93.List, _0x9C48)
+end
+end
+end
+function _0x0E93.Detach()
+if _0x0E93.Added then
+_0x0E93.Added:Disconnect()
+_0x0E93.Added = nil
+end
+if _0x0E93.Removed then
+_0x0E93.Removed:Disconnect()
+_0x0E93.Removed = nil
+end
+_0x0E93.Folder = nil
+_0x0E93.List = {}
+_0x0E93.Set = {}
+_0x0E93.Prompts = {}
+_0x0E93.PromptAt = {}
+end
+function _0x0E93.Attach()
+local _0x1793 = _0x9AAD:FindFirstChild(string.char(67,104,101,115,116,115))
+if _0x1793 == _0x0E93.Folder then return end
+_0x0E93.Detach()
+_0x0E93.Folder = _0x1793
+if not _0x1793 then return end
+_0x0E93.Added = _0x1793.DescendantAdded:Connect(_0x0E93.Track)
+_0x0E93.Removed = _0x1793.DescendantRemoving:Connect(_0x0E93.Untrack)
+for _, Descendant in ipairs(_0x1793:GetDescendants()) do
+_0x0E93.Track(Descendant)
+end
+end
+function _0x0E93.GetPrompt(_0x348F)
+local _0x983F = _0x0E93.Prompts[_0x348F]
+if _0x983F and _0x983F.Parent then
+return _0x983F
+end
+local _0x78F4 = os.clock()
+local _0x6FC7 = _0x0E93.PromptAt[_0x348F]
+if _0x6FC7 and _0x78F4 - _0x6FC7 < 1 then
+return nil
+end
+_0x0E93.PromptAt[_0x348F] = _0x78F4
+_0x0E93.Prompts[_0x348F] = nil
+for _, _0x8544 in ipairs(_0x348F:GetDescendants()) do
+if _0x8544:IsA(string.char(80,114,111,120,105,109,105,116,121,80,114,111,109,112,116)) then
+_0x0E93.Prompts[_0x348F] = _0x8544
+return _0x8544
+end
+end
+return nil
+end
+function _0x0E93.GetValidChest()
+for _, _0x348F in ipairs(_0x0E93.List) do
+if _0x348F.Parent then
+local _0xD1AD = _0x0E93.GetPrompt(_0x348F)
+if _0xD1AD and _0xD1AD.Enabled then
+local _0xBFC2 = _0x5ECA.GetPosition(_0x348F)
+if _0xBFC2 and not _0x5ECA.HasNearbyPlayer(_0xBFC2, _0x0E93.PlayerDistance) then
+return _0x348F, _0xD1AD, _0xBFC2
+end
+end
+end
+end
+return nil
+end
+function _0x0E93.ClearIdle()
+_0x0E93.IdleCFrame = nil
+_0x0E93.IdleRoot = nil
+end
+function _0x0E93.SetIdle(_0x9AE5)
+if _0x0E93.IdleRoot ~= _0x9AE5 or not _0x0E93.IdleCFrame then
+_0x0E93.IdleRoot = _0x9AE5
+_0x0E93.IdleCFrame = CFrame.new(
+-6501.73926, 46.1688461, -1858.58411,
+0.998443782, 0, 0.0557679236,
+0, 1, 0,
+-0.0557679236, 0, 0.998443782
+)
+pcall(function()
+_0x9AE5.CFrame = _0x0E93.IdleCFrame
+end)
+end
+end
+function _0x0E93.Run(_0x1F60)
+while _0x0E93.Enabled and _0x1F60 == _0x0E93.RunId do
+_0x0E93.Attach()
+local _0x9AE5 = _0x0E93.GetHorseRoot()
+if not _0x9AE5 then
+_0x0E93.ClearIdle()
+task.wait(0.25)
+continue
+end
+local _0x348F, _0xD1AD, _0xBFC2 = _0x0E93.GetValidChest()
+if not _0x348F or not _0xD1AD or not _0xBFC2 then
+_0x0E93.SetIdle(_0x9AE5)
+task.wait(0.1)
+continue
+end
+_0x0E93.ClearIdle()
+if not _0x0E93.Enabled or _0x1F60 ~= _0x0E93.RunId then
+break
+end
+_0x9AE5 = _0x0E93.GetHorseRoot()
+if not _0x9AE5 then
+task.wait(0.25)
+continue
+end
+pcall(function()
+_0x9AE5.CFrame = CFrame.new(_0xBFC2 + Vector3.new(0, 3, 0))
+_0x9AE5.AssemblyLinearVelocity = Vector3.zero
+_0x9AE5.AssemblyAngularVelocity = Vector3.zero
+end)
+local _0xF185 = os.clock()
+while _0x0E93.Enabled and _0x1F60 == _0x0E93.RunId and os.clock() - _0xF185 < _0x0E93.Cooldown do
+task.wait(0.05)
+if not _0x0E93.GetHorseRoot() then
+break
+end
+if not _0x348F.Parent or not _0xD1AD.Parent or not _0xD1AD.Enabled then
+break
+end
+end
+if not _0x0E93.Enabled or _0x1F60 ~= _0x0E93.RunId then
+break
+end
+if _0x348F.Parent and _0xD1AD.Parent and _0xD1AD.Enabled then
+pcall(function()
+fireproximityprompt(_0xD1AD)
+end)
+end
+task.wait(0.15)
+end
+_0x0E93.ClearIdle()
+end
+function _0x0E93.SetEnabled(_0x22A7)
+_0x0E93.Enabled = _0x22A7
+_0x0E93.RunId += 1
+_0x0E93.ClearIdle()
+if _0x22A7 then
+local _0x1F60 = _0x0E93.RunId
+task.spawn(_0x0E93.Run, _0x1F60)
+else
+_0x0E93.Detach()
+end
+end
+local _0xE71C = {
+Enabled = false,
+Smooth = 10,
+_0x280B = 25,
+MoveCone = 8,
+TwistRatio = 0.5,
+MaxTwist = math.rad(35),
+MaxLead = math.rad(15),
+MaxHeadYaw = math.rad(70),
+MaxHeadPitch = math.rad(60),
+BodyYaw = nil,
+LastCamYaw = nil,
+Twisted = 0,
+HeadYaw = 0,
+HeadPitch = 0,
+AlignCFrame = nil,
+RootC0 = nil,
+NeckC0 = nil,
+_0x4AC1 = nil,
+Joints = {},
+Connection = nil,
+}
+function _0xE71C.Wrap(Angle)
+return (Angle + math.pi) % (math.pi * 2) - math.pi
+end
+function _0xE71C.Restore()
+for _, Data in pairs(_0xE71C.Joints) do
+if Data.Joint and Data.Joint.Parent then
+pcall(function()
+Data.Joint.C0 = Data.Base
+end)
+end
+end
+_0xE71C.BodyYaw = nil
+_0xE71C.LastCamYaw = nil
+_0xE71C.Twisted = 0
+_0xE71C.HeadYaw = 0
+_0xE71C.HeadPitch = 0
+_0xE71C.AlignCFrame = nil
+_0xE71C.RootC0 = nil
+_0xE71C.NeckC0 = nil
+end
+function _0xE71C.LoadJoints(_0x4AC1, _0x9AE5)
+if _0xE71C.Character == _0x4AC1 then return end
+_0xE71C.Restore()
+_0xE71C.Character = _0x4AC1
+_0xE71C.Joints = {}
+local _0x3372 = _0x4AC1:FindFirstChild(string.char(84,111,114,115,111)) or _0x4AC1:FindFirstChild(string.char(85,112,112,101,114,84,111,114,115,111))
+local _0x9B03 = _0x9AE5:FindFirstChild(string.char(82,111,111,116,74,111,105,110,116))
+local _0xA9BE = _0x3372 and _0x3372:FindFirstChild(string.char(78,101,99,107))
+if _0x9B03 and _0x9B03:IsA(string.char(77,111,116,111,114,54,68)) then
+local _0xBD41 = _0x9B03.C0
+_0xE71C.Joints.Root = {
+Joint = _0x9B03,
+_0xBD41 = _0xBD41,
+Pivot = _0xBD41.Position,
+Rotation = _0xBD41 - _0xBD41.Position,
+}
+end
+if _0xA9BE and _0xA9BE:IsA(string.char(77,111,116,111,114,54,68)) then
+local _0xBD41 = _0xA9BE.C0
+_0xE71C.Joints.Neck = {
+Joint = _0xA9BE,
+_0xBD41 = _0xBD41,
+Pivot = _0xBD41.Position,
+Rotation = _0xBD41 - _0xBD41.Position,
+}
+end
+end
+function _0xE71C.IsBlocked(_0x4AC1)
+return _0x4AC1:GetAttribute(string.char(73,115,82,105,100,105,110,103))
+or _0x4AC1:GetAttribute(string.char(73,115,82,97,103,100,111,108,108,101,100))
+or _0x4AC1:GetAttribute(string.char(73,115,75,110,111,99,107,101,100,68,111,119,110))
+or _0x4AC1:GetAttribute(string.char(87,97,108,108,115,116,105,99,107,65,99,116,105,118,101)) == true
+or typeof(_0x4AC1:GetAttribute(string.char(70,114,101,101,122,101,71,114,97,98,79,114,105,101,110,116,97,116,105,111,110))) ==string.char(67,70,114,97,109,101)end
+function _0xE71C.ApplyJoints()
+local _0x37CC = _0xE71C.Joints.Root
+local _0x0336 = _0xE71C.Joints.Neck
+if _0x37CC and _0x37CC.Joint.Parent and _0xE71C.RootC0 then
+_0x37CC.Joint.C0 = _0xE71C.RootC0
+end
+if _0x0336 and _0x0336.Joint.Parent and _0xE71C.NeckC0 then
+_0x0336.Joint.C0 = _0xE71C.NeckC0
+end
+end
+function _0xE71C.Update(DeltaTime)
+if not _0xE71C.Enabled then return end
+local _0x4AC1 = _0x9AFC.Character
+local _0x9AE5 = _0x4AC1 and _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+local _0xCCEC = _0x4AC1 and _0x4AC1:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))
+local _0x50EF = _0x9AAD.CurrentCamera
+local _0x4958 = _0x9AE5 and _0x9AE5:FindFirstChild(string.char(65,105,109,65,108,105,103,110,79,114,105,101,110,116,97,116,105,111,110))
+if not (_0x4AC1 and _0x9AE5 and _0xCCEC and _0x50EF) then return end
+if not _0x4958 or not _0x4958.Enabled or _0xE71C.IsBlocked(_0x4AC1) then
+if _0xE71C.BodyYaw then
+_0xE71C.Restore()
+end
+return
+end
+_0xE71C.LoadJoints(_0x4AC1, _0x9AE5)
+local _0xB936 = math.clamp(DeltaTime, 1 / 240, 0.1)
+local _0x2726 = _0x50EF.CFrame.LookVector
+local _0x69EE = math.atan2(-_0x2726.X, -_0x2726.Z)
+local _0xB707 = math.asin(math.clamp(_0x2726.Y, -1, 1))
+local _0xAB2B = _0xE71C.LastCamYaw and _0xE71C.Wrap(_0x69EE - _0xE71C.LastCamYaw) / _0xB936 or 0
+_0xE71C.LastCamYaw = _0x69EE
+if not _0xE71C.BodyYaw then
+local _0x779A = _0x9AE5.CFrame.LookVector
+_0xE71C.BodyYaw = math.atan2(-_0x779A.X, -_0x779A.Z)
+end
+local _0xE698 = 1 - math.exp(-_0xE71C.Smooth * _0xB936)
+local _0xBC09 = 1 - math.exp(-_0xE71C.Smooth * 1.5 * _0xB936)
+local _0x3901 = _0xCCEC.MoveDirection.Magnitude > 0.1
+local _0x280B = math.rad(_0x3901 and _0xE71C.MoveCone or _0xE71C.Cone)
+local _0x0999 = _0xE71C.Wrap(_0x69EE - _0xE71C.BodyYaw)
+local _0x2FB0 = _0xE71C.BodyYaw
+if math.abs(_0x0999) > _0x280B then
+_0x2FB0 = _0x69EE - (_0x0999 > 0 and 1 or -1) * _0x280B
+end
+_0xE71C.BodyYaw = _0xE71C.Wrap(_0xE71C.BodyYaw + _0xE71C.Wrap(_0x2FB0 - _0xE71C.BodyYaw) * _0xE698)
+_0xE71C.AlignCFrame = CFrame.Angles(0, _0xE71C.BodyYaw, 0)
+_0x4958.RigidityEnabled = false
+_0x4958.Responsiveness = 200
+_0x4958.CFrame = _0xE71C.AlignCFrame
+local _0xF53F = _0xE71C.Wrap(_0x69EE - _0xE71C.BodyYaw)
+local _0x4043 = math.clamp(_0xAB2B * 0.05, -_0xE71C.MaxLead, _0xE71C.MaxLead)
+local _0xFA7E = math.clamp(_0xF53F * _0xE71C.TwistRatio + _0x4043, -_0xE71C.MaxTwist, _0xE71C.MaxTwist)
+_0xE71C.Twisted += (_0xFA7E - _0xE71C.Twisted) * _0xBC09
+local _0x9828 = math.clamp(_0xF53F - _0xE71C.Twisted, -_0xE71C.MaxHeadYaw, _0xE71C.MaxHeadYaw)
+local _0x054B = math.clamp(_0xB707, -_0xE71C.MaxHeadPitch, _0xE71C.MaxHeadPitch)
+_0xE71C.HeadYaw += (_0x9828 - _0xE71C.HeadYaw) * _0xBC09
+_0xE71C.HeadPitch += (_0x054B - _0xE71C.HeadPitch) * _0xBC09
+local _0x37CC = _0xE71C.Joints.Root
+if _0x37CC then
+_0xE71C.RootC0 = CFrame.new(_0x37CC.Pivot)
+* CFrame.Angles(0, _0xE71C.Twisted, 0)
+* _0x37CC.Rotation
+end
+local _0x0336 = _0xE71C.Joints.Neck
+if _0x0336 then
+_0xE71C.NeckC0 = CFrame.new(_0x0336.Pivot)
+* CFrame.Angles(0, _0xE71C.HeadYaw, 0)
+* CFrame.Angles(_0xE71C.HeadPitch, 0, 0)
+* _0x0336.Rotation
+end
+_0xE71C.ApplyJoints()
+end
+function _0xE71C.Reapply()
+if not _0xE71C.Enabled or not _0xE71C.AlignCFrame then return end
+local _0x4AC1 = _0x9AFC.Character
+local _0x9AE5 = _0x4AC1 and _0x4AC1:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))
+local _0x4958 = _0x9AE5 and _0x9AE5:FindFirstChild(string.char(65,105,109,65,108,105,103,110,79,114,105,101,110,116,97,116,105,111,110))
+if _0x4958 and _0x4958.Enabled then
+_0x4958.RigidityEnabled = false
+_0x4958.Responsiveness = 200
+_0x4958.CFrame = _0xE71C.AlignCFrame
+end
+_0xE71C.ApplyJoints()
+end
+function _0xE71C.Bind()
+pcall(function()
+_0xA3CC:UnbindFromRenderStep(string.char(77,101,111,119,66,101,116,116,101,114,65,105,109))
+end)
+_0xA3CC:BindToRenderStep(string.char(77,101,111,119,66,101,116,116,101,114,65,105,109), Enum.RenderPriority.Last.Value, _0xE71C.Update)
+end
+function _0xE71C.Unbind()
+pcall(function()
+_0xA3CC:UnbindFromRenderStep(string.char(77,101,111,119,66,101,116,116,101,114,65,105,109))
+end)
+end
+function _0xE71C.SetEnabled(_0x22A7)
+_0xE71C.Enabled = _0x22A7
+if _0x22A7 then
+_0xE71C.Bind()
+_0x5ECA.Connect(_0xE71C, _0xA3CC.PreSimulation, _0xE71C.Reapply)
+else
+_0xE71C.Unbind()
+_0x5ECA.Disconnect(_0xE71C)
+_0xE71C.Restore()
+end
+end
+local _0xB1D4 = {
+Enabled = false,
+_0x4043 = 0.5,
+Cooldown = 0.25,
+LastClick = 0,
+LastRotation = nil,
+LastOffset = nil,
+LastStart = nil,
+_0x78D4 = nil,
+_0xA154 = nil,
+_0xC4FA = nil,
+_0x73CD = nil,
+NextScan = 0,
+Connection = nil,
+}
+function _0xB1D4.Wrap(Angle)
+return Angle % 360
+end
+function _0xB1D4.Signed(Angle)
+return (Angle + 180) % 360 - 180
+end
+function _0xB1D4.Reset()
+_0xB1D4.LastRotation = nil
+_0xB1D4.LastOffset = nil
+_0xB1D4.LastStart = nil
+end
+function _0xB1D4.Scan(_0x78F4)
+_0xB1D4.NextScan = _0x78F4 + 0.05
+_0xB1D4.Cursor = nil
+_0xB1D4.Perfect = nil
+_0xB1D4.Outer = nil
+_0xB1D4.Inner = nil
+local _0x8334 = _0x9AFC:FindFirstChild(string.char(80,108,97,121,101,114,71,117,105))
+local _0xB714 = _0x8334 and _0x8334:FindFirstChild(string.char(83,107,105,108,108,67,104,101,99,107))
+local _0x5500 = _0xB714 and _0xB714:FindFirstChild(string.char(82,105,110,103))
+local _0x78D4 = _0x5500 and _0x5500:FindFirstChild(string.char(67,117,114,115,111,114))
+local _0xA154 = _0x5500 and _0x5500:FindFirstChild(string.char(80,101,114,102,101,99,116,90,111,110,101))
+if not _0x78D4 or not _0xA154 then
+return false
+end
+local _0xC4FA = _0xA154:FindFirstChildOfClass(string.char(85,73,71,114,97,100,105,101,110,116))
+local _0x54CA = _0xA154:FindFirstChild(string.char(82,105,110,103))
+local _0xBA39 = _0x54CA and _0x54CA:FindFirstChildOfClass(string.char(85,73,83,116,114,111,107,101))
+local _0x73CD = _0xBA39 and _0xBA39:FindFirstChildOfClass(string.char(85,73,71,114,97,100,105,101,110,116))
+if not _0xC4FA or not _0x73CD then
+return false
+end
+_0xB1D4.Cursor = _0x78D4
+_0xB1D4.Perfect = _0xA154
+_0xB1D4.Outer = _0xC4FA
+_0xB1D4.Inner = _0x73CD
+return true
+end
+function _0xB1D4.GetParts(_0x78F4)
+local _0x78D4 = _0xB1D4.Cursor
+local _0xA154 = _0xB1D4.Perfect
+if not (_0x78D4 and _0xA154 and _0x78D4.Parent and _0xA154.Parent and _0xB1D4.Outer.Parent and _0xB1D4.Inner.Parent) then
+if _0x78F4 < _0xB1D4.NextScan or not _0xB1D4.Scan(_0x78F4) then
+return nil
+end
+_0x78D4 = _0xB1D4.Cursor
+_0xA154 = _0xB1D4.Perfect
+end
+if not _0xA154.Visible then
+return nil
+end
+return _0x78D4, _0xB1D4.Outer, _0xB1D4.Inner
+end
+function _0xB1D4.Click()
+local _0x78F4 = os.clock()
+if _0x78F4 - _0xB1D4.LastClick < _0xB1D4.Cooldown then return end
+_0xB1D4.LastClick = _0x78F4
+if mouse1click then
+pcall(mouse1click)
+end
+end
+function _0xB1D4.Update()
+if not _0xB1D4.Enabled then return end
+local _0x78D4, _0xC4FA, _0x73CD = _0xB1D4.GetParts(os.clock())
+if not _0x78D4 then
+_0xB1D4.Reset()
+return
+end
+local _0xD229 = _0xB1D4.Wrap(_0x73CD.Rotation - 180)
+local _0x94EF = _0xB1D4.Wrap(_0xC4FA.Rotation - _0xD229)
+if _0x94EF <= 0 then return end
+if _0xB1D4.LastStart and math.abs(_0xB1D4.Signed(_0xD229 - _0xB1D4.LastStart)) > 0.01 then
+_0xB1D4.LastRotation = nil
+_0xB1D4.LastOffset = nil
+end
+_0xB1D4.LastStart = _0xD229
+local _0x7C63 = _0xB1D4.Wrap(_0x78D4.Rotation)
+if not _0xB1D4.LastRotation then
+_0xB1D4.LastRotation = _0x7C63
+return
+end
+local _0xB936 = _0xB1D4.Signed(_0x7C63 - _0xB1D4.LastRotation)
+_0xB1D4.LastRotation = _0x7C63
+local _0xE4DC = _0x7C63 + _0xB936 * _0xB1D4.Lead
+local _0x0394 = _0xD229 + _0x94EF / 2
+local _0x86B2 = _0xB1D4.Signed(_0xE4DC - _0x0394)
+local _0xAD5B = _0xB1D4.LastOffset
+_0xB1D4.LastOffset = _0x86B2
+if not _0xAD5B or math.abs(_0x86B2) > 45 or math.abs(_0xAD5B) > 45 then return end
+local _0x2F3B = _0xB936 > 0 and _0xAD5B <= 0 and _0x86B2 > 0
+local _0x6F35 = _0xB936 < 0 and _0xAD5B >= 0 and _0x86B2 < 0
+if _0x2F3B or _0x6F35 then
+_0xB1D4.Click()
+end
+end
+function _0xB1D4.SetEnabled(_0x22A7)
+if _0x22A7 and not mouse1click then
+_0x5ECA.Notify(string.char(109,111,117,115,101,49,99,108,105,99,107,32,105,115,32,110,111,116,32,115,117,112,112,111,114,116,101,100,32,98,121,32,121,111,117,114,32,101,120,101,99,117,116,111,114,46))
+task.defer(function()
+pcall(function()
+_0x4FF5.Toggles.AutoOreToggle:SetValue(false)
+end)
+end)
+return
+end
+_0xB1D4.Enabled = _0x22A7
+_0xB1D4.Reset()
+if _0x22A7 then
+_0x5ECA.Connect(_0xB1D4, _0xA3CC.RenderStepped, _0xB1D4.Update)
+else
+_0x5ECA.Disconnect(_0xB1D4)
+end
+end
+local _0x8B2A = {
+Visuals = _0xE346:AddTab(string.char(86,105,115,117,97,108,115),string.char(101,121,101)),
+_0x162D = _0xE346:AddTab(string.char(67,111,109,98,97,116),string.char(115,119,111,114,100)),
+_0xE6E1 = _0xE346:AddTab(string.char(72,111,114,115,101,115),string.char(104,111,114,115,101)),
+Automations = _0xE346:AddTab(string.char(65,117,116,111,109,97,116,105,111,110,115),string.char(98,111,116)),
+Teleports = _0xE346:AddTab(string.char(84,101,108,101,112,111,114,116,115),string.char(109,97,112,45,112,105,110)),
+Config = _0xE346:AddTab(string.char(67,111,110,102,105,103),string.char(99,111,103)),
+}
+local _0xA49B = {
+_0x99F6 = _0x8B2A.Visuals:AddLeftGroupbox(string.char(80,108,97,121,101,114,32,69,83,80)),
+_0xCCA0 = _0x8B2A.Visuals:AddLeftGroupbox(string.char(78,80,67,32,69,83,80)),
+Ore = _0x8B2A.Visuals:AddLeftGroupbox(string.char(79,114,101,32,69,83,80)),
+Safe = _0x8B2A.Visuals:AddLeftGroupbox(string.char(83,97,102,101,32,69,83,80)),
+Mob = _0x8B2A.Visuals:AddRightGroupbox(string.char(77,111,98,32,69,83,80)),
+_0x348F = _0x8B2A.Visuals:AddRightGroupbox(string.char(67,104,101,115,116,32,69,83,80)),
+Saint = _0x8B2A.Visuals:AddRightGroupbox(string.char(83,97,105,110,116,32,80,97,114,116,115,32,69,83,80)),
+_0x162D = _0x8B2A.Combat:AddLeftGroupbox(string.char(65,105,109,98,111,116)),
+_0xE71C = _0x8B2A.Combat:AddRightGroupbox(string.char(66,101,116,116,101,114,32,65,105,109)),
+_0xE6E1 = _0x8B2A.Horses:AddLeftGroupbox(string.char(72,111,114,115,101,32,83,112,101,101,100)),
+Fly = _0x8B2A.Horses:AddRightGroupbox(string.char(72,111,114,115,101,32,70,108,121)),
+Farm = _0x8B2A.Automations:AddLeftGroupbox(string.char(67,104,101,115,116,32,70,97,114,109)),
+_0xB1D4 = _0x8B2A.Automations:AddRightGroupbox(string.char(65,117,116,111,32,79,114,101)),
+_0xCEE6 = _0x8B2A.Teleports:AddLeftGroupbox(string.char(84,80,32,116,111,32,80,108,97,121,101,114)),
+TPSafe = _0x8B2A.Teleports:AddLeftGroupbox(string.char(84,80,32,116,111,32,83,97,102,101)),
+_0xED31 = _0x8B2A.Teleports:AddRightGroupbox(string.char(84,80,32,116,111,32,78,80,67)),
+Config = _0x8B2A.Config:AddRightGroupbox(string.char(67,111,110,102,105,103)),
+}
+local function _0x02EF(_0xAB67, _0x2278, _0x100A, _0x4158, Limit)
+_0xAB67:AddToggle(_0x2278 ..string.char(84,111,103,103,108,101), {
+_0x40D5 = _0x100A,
+Default = false,
+Callback = function(_0x22A7)
+_0x4158:SetEnabled(_0x22A7)
+end,
+})
+_0xAB67:AddSlider(_0x2278 ..string.char(68,105,115,116,97,110,99,101), {
+_0x40D5 =string.char(77,97,120,32,68,105,115,116,97,110,99,101),
+Default = _0x4158.MaxDistance,
+Min = 1,
+_0x0B46 = Limit,
+Rounding = 0,
+Suffix =string.char(32,115,116,117,100,115),
+Callback = function(_0x22A7)
+_0x4158.MaxDistance = _0x22A7
+end,
+})
+_0xAB67:AddLabel(string.char(67,111,108,111,114)):AddColorPicker(_0x2278 ..string.char(67,111,108,111,114), {
+Default = _0x4158.Color,
+Callback = function(_0xCD59)
+_0x4158:SetColor(_0xCD59)
+end,
+})
+end
+_0xA49B.Combat:AddToggle(string.char(65,105,109,98,111,116,84,111,103,103,108,101), {
+_0x40D5 =string.char(65,105,109,98,111,116),
+Default = false,
+Callback = _0x162D.SetEnabled,
+}):AddKeyPicker(string.char(65,105,109,98,111,116,66,105,110,100), {
+Default =string.char(70,52),
+Mode =string.char(84,111,103,103,108,101),
+_0x40D5 =string.char(65,105,109,98,111,116),
+SyncToggleState = true,
+})
+_0xA49B.Combat:AddToggle(string.char(65,105,109,98,111,116,83,116,105,99,107,121), {
+_0x40D5 =string.char(83,116,105,99,107,121,32,84,97,114,103,101,116),
+Default = true,
+Callback = function(_0x22A7)
+_0x162D.Sticky = _0x22A7
+_0x162D.Target = nil
+end,
+})
+_0xA49B.Combat:AddToggle(string.char(65,105,109,98,111,116,77,111,101,87,111,108,102,102), {
+_0x40D5 =string.char(84,97,114,103,101,116,32,77,111,101,87,111,108,102,102),
+Default = true,
+Callback = function(_0x22A7)
+_0x162D.MobTarget = _0x22A7
+_0x162D.Target = nil
+end,
+})
+_0xA49B.Combat:AddSlider(string.char(65,105,109,98,111,116,83,109,111,111,116,104), {
+_0x40D5 =string.char(83,109,111,111,116,104),
+Default = 0.25,
+Min = 0.05,
+_0x0B46 = 1,
+Rounding = 2,
+Callback = function(_0x22A7)
+_0x162D.Smooth = _0x22A7
+end,
+})
+_0xA49B.Combat:AddSlider(string.char(65,105,109,98,111,116,70,79,86), {
+_0x40D5 =string.char(70,79,86),
+Default = 30,
+Min = 30,
+_0x0B46 = 400,
+Rounding = 0,
+Callback = function(_0x22A7)
+_0x162D.FOV = _0x22A7
+end,
+})
+_0xA49B.Combat:AddSlider(string.char(65,105,109,98,111,116,68,105,115,116,97,110,99,101), {
+_0x40D5 =string.char(77,97,120,32,68,105,115,116,97,110,99,101),
+Default = 400,
+Min = 50,
+_0x0B46 = 1500,
+Rounding = 0,
+Suffix =string.char(32,115,116,117,100,115),
+Callback = function(_0x22A7)
+_0x162D.MaxDistance = _0x22A7
+end,
+})
+_0xA49B.Combat:AddSlider(string.char(65,105,109,98,111,116,80,114,101,100,105,99,116,105,111,110), {
+_0x40D5 =string.char(80,114,101,100,105,99,116,105,111,110),
+Default = 0.05,
+Min = 0,
+_0x0B46 = 0.5,
+Rounding = 2,
+Suffix =string.char(32,115),
+Callback = function(_0x22A7)
+_0x162D.Prediction = _0x22A7
+end,
+})
+_0xA49B.Combat:AddSlider(string.char(65,105,109,98,111,116,83,112,101,101,100,66,111,111,115,116), {
+_0x40D5 =string.char(83,112,101,101,100,32,66,111,111,115,116),
+Default = 0.5,
+Min = 0,
+_0x0B46 = 2,
+Rounding = 2,
+Callback = function(_0x22A7)
+_0x162D.SpeedBoost = _0x22A7
+end,
+})
+_0xA49B.Combat:AddToggle(string.char(65,105,109,98,111,116,70,114,105,101,110,100,67,104,101,99,107), {
+_0x40D5 =string.char(70,114,105,101,110,100,32,67,104,101,99,107),
+Default = true,
+Callback = function(_0x22A7)
+_0x162D.FriendCheck = _0x22A7
+end,
+})
+_0xA49B.BetterAim:AddToggle(string.char(66,101,116,116,101,114,65,105,109,84,111,103,103,108,101), {
+_0x40D5 =string.char(66,101,116,116,101,114,32,65,105,109),
+Default = false,
+Callback = _0xE71C.SetEnabled,
+})
+_0xA49B.AutoOre:AddToggle(string.char(65,117,116,111,79,114,101,84,111,103,103,108,101), {
+_0x40D5 =string.char(65,117,116,111,32,79,114,101),
+Default = false,
+Callback = _0xB1D4.SetEnabled,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,84,111,103,103,108,101), {
+_0x40D5 =string.char(80,108,97,121,101,114,32,69,83,80),
+Default = false,
+Callback = _0xFFDE.SetEnabled,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,78,97,109,101), {
+_0x40D5 =string.char(83,104,111,119,32,78,97,109,101),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.ShowName = _0x22A7
+_0xFFDE.Bump()
+end,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,68,105,115,116,97,110,99,101,84,101,120,116), {
+_0x40D5 =string.char(83,104,111,119,32,68,105,115,116,97,110,99,101),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.ShowDistance = _0x22A7
+_0xFFDE.Bump()
+end,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,83,116,114,101,97,107), {
+_0x40D5 =string.char(83,104,111,119,32,75,105,108,108,32,83,116,114,101,97,107),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.ShowStreak = _0x22A7
+_0xFFDE.Bump()
+end,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,72,101,97,108,116,104), {
+_0x40D5 =string.char(83,104,111,119,32,72,101,97,108,116,104,32,66,97,114),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.ShowHealth = _0x22A7
+end,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,66,111,120), {
+_0x40D5 =string.char(83,104,111,119,32,66,111,120),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.ShowBox = _0x22A7
+end,
+})
+_0xA49B.Player:AddToggle(string.char(80,108,97,121,101,114,69,115,112,86,97,109,112,105,114,101), {
+_0x40D5 =string.char(72,105,103,104,108,105,103,104,116,32,86,97,109,112,105,114,101,115),
+Default = true,
+Callback = function(_0x22A7)
+_0xFFDE.HighlightVampire = _0x22A7
+end,
+})
+_0xA49B.Player:AddSlider(string.char(80,108,97,121,101,114,69,115,112,68,105,115,116,97,110,99,101), {
+_0x40D5 =string.char(77,97,120,32,68,105,115,116,97,110,99,101),
+Default = 2000,
+Min = 1,
+_0x0B46 = 10000,
+Rounding = 0,
+Suffix =string.char(32,115,116,117,100,115),
+Callback = function(_0x22A7)
+_0xFFDE.MaxDistance = _0x22A7
+end,
+})
+_0xA49B.Player:AddLabel(string.char(67,111,108,111,114)):AddColorPicker(string.char(80,108,97,121,101,114,69,115,112,67,111,108,111,114), {
+Default = _0xFFDE.Color,
+Callback = function(_0xCD59)
+_0xFFDE.Color = _0xCD59
+end,
+})
+_0xA49B.Player:AddLabel(string.char(66,111,120,32,67,111,108,111,114)):AddColorPicker(string.char(80,108,97,121,101,114,69,115,112,66,111,120,67,111,108,111,114), {
+Default = _0xFFDE.BoxColor,
+Callback = function(_0xCD59)
+_0xFFDE.BoxColor = _0xCD59
+end,
+})
+_0xA49B.Player:AddLabel(string.char(86,97,109,112,105,114,101,32,67,111,108,111,114)):AddColorPicker(string.char(80,108,97,121,101,114,69,115,112,86,97,109,112,105,114,101,67,111,108,111,114), {
+Default = _0xFFDE.VampireColor,
+Callback = function(_0xCD59)
+_0xFFDE.VampireColor = _0xCD59
+end,
+})
+_0x02EF(_0xA49B.Npc,string.char(78,112,99,69,115,112),string.char(78,80,67,32,69,83,80), _0x788A, 50000)
+_0x02EF(_0xA49B.Mob,string.char(77,111,98,69,115,112),string.char(77,111,98,32,69,83,80), _0x3C17, 50000)
+_0x02EF(_0xA49B.Saint,string.char(83,97,105,110,116,69,115,112),string.char(83,97,105,110,116,32,80,97,114,116,115,32,69,83,80), _0x8456, 50000)
+_0x02EF(_0xA49B.Ore,string.char(79,114,101,69,115,112),string.char(79,114,101,32,69,83,80), _0x3D1A, 50000)
+_0x02EF(_0xA49B.Safe,string.char(83,97,102,101,69,115,112),string.char(83,97,102,101,32,69,83,80), _0xACA9, 50000)
+_0x02EF(_0xA49B.Chest,string.char(67,104,101,115,116,69,115,112),string.char(67,104,101,115,116,32,69,83,80), _0x9165, 50000)
+_0xA49B.Horses:AddToggle(string.char(72,111,114,115,101,83,112,101,101,100,84,111,103,103,108,101), {
+_0x40D5 =string.char(72,111,114,115,101,32,83,112,101,101,100),
+Default = false,
+Callback = _0xE6E1.SetEnabled,
+})
+_0xA49B.Horses:AddSlider(string.char(72,111,114,115,101,83,112,101,101,100,86,97,108,117,101), {
+_0x40D5 =string.char(83,116,97,116,95,83,112,101,101,100),
+Default = 1,
+Min = 0.1,
+_0x0B46 = 5,
+Rounding = 2,
+Callback = function(_0x22A7)
+_0xE6E1.Speed = _0x22A7
+end,
+})
+_0xA49B.Fly:AddToggle(string.char(72,111,114,115,101,70,108,121,84,111,103,103,108,101), {
+_0x40D5 =string.char(72,111,114,115,101,32,70,108,121),
+Default = false,
+Callback = _0xE375.SetEnabled,
+}):AddKeyPicker(string.char(72,111,114,115,101,70,108,121,66,105,110,100), {
+Default =string.char(70,54),
+Mode =string.char(84,111,103,103,108,101),
+_0x40D5 =string.char(72,111,114,115,101,32,70,108,121),
+SyncToggleState = true,
+})
+_0xA49B.Fly:AddSlider(string.char(72,111,114,115,101,70,108,121,83,112,101,101,100), {
+_0x40D5 =string.char(70,108,121,32,83,112,101,101,100),
+Default = 60,
+Min = 10,
+_0x0B46 = 300,
+Rounding = 0,
+Callback = function(_0x22A7)
+_0xE375.Speed = _0x22A7
+end,
+})
+_0xA49B.Farm:AddToggle(string.char(70,97,114,109,67,104,101,115,116), {
+_0x40D5 =string.char(70,97,114,109,67,104,101,115,116),
+Default = false,
+Callback = _0x0E93.SetEnabled,
+})
+_0xA49B.TPPlayer:AddDropdown(string.char(84,80,80,108,97,121,101,114,68,114,111,112,100,111,119,110), {
+_0x40D5 =string.char(80,108,97,121,101,114),
+_0x2848 = {},
+Default = nil,
+Multi = false,
+Callback = function(_0x22A7)
+_0xCEE6.Selected = _0x22A7
+end,
+})
+_0xA49B.TPPlayer:AddButton({
+_0x40D5 =string.char(82,101,102,114,101,115,104),
+Func = function()
+_0xCEE6.Refresh()
+_0x5ECA.Notify(string.char(80,108,97,121,101,114,32,108,105,115,116,32,114,101,102,114,101,115,104,101,100,46))
+end,
+})
+_0xA49B.TPPlayer:AddButton({
+_0x40D5 =string.char(84,101,108,101,112,111,114,116),
+Func = _0xCEE6.Teleport,
+})
+_0xA49B.TPNpc:AddDropdown(string.char(84,80,78,112,99,68,114,111,112,100,111,119,110), {
+_0x40D5 =string.char(78,80,67),
+_0x2848 = {},
+Default = nil,
+Multi = false,
+Callback = function(_0x22A7)
+_0xED31.Selected = _0x22A7
+end,
+})
+_0xA49B.TPNpc:AddButton({
+_0x40D5 =string.char(82,101,102,114,101,115,104),
+Func = function()
+_0xED31.Refresh()
+_0x5ECA.Notify(string.char(78,80,67,32,108,105,115,116,32,114,101,102,114,101,115,104,101,100,46))
+end,
+})
+_0xA49B.TPNpc:AddButton({
+_0x40D5 =string.char(84,101,108,101,112,111,114,116),
+Func = _0xED31.Teleport,
+})
+_0xA49B.TPSafe:AddDropdown(string.char(84,80,83,97,102,101,68,114,111,112,100,111,119,110), {
+_0x40D5 =string.char(83,97,102,101),
+_0x2848 = {},
+Default = nil,
+Multi = false,
+Callback = function(_0x22A7)
+_0xC39D.Selected = _0xC39D.Map[_0x22A7]
+end,
+})
+_0xA49B.TPSafe:AddButton({
+_0x40D5 =string.char(82,101,102,114,101,115,104),
+Func = function()
+_0xC39D.Refresh()
+_0x5ECA.Notify(string.char(83,97,102,101,32,108,105,115,116,32,114,101,102,114,101,115,104,101,100,46))
+end,
+})
+_0xA49B.TPSafe:AddButton({
+_0x40D5 =string.char(84,101,108,101,112,111,114,116),
+Func = _0xC39D.Teleport,
+})
+_0xA49B.TPSafe:AddButton({
+_0x40D5 =string.char(84,101,108,101,112,111,114,116,32,116,111,32,78,101,97,114,101,115,116),
+Func = _0xC39D.TeleportNearest,
+})
+for _, _0x99F6 in ipairs(_0xE5A5:GetPlayers()) do
+_0xFFDE.Add(_0x99F6)
+end
+_0x4FF5:GiveSignal(_0xE5A5.PlayerAdded:Connect(function(_0x99F6)
+_0xFFDE.Add(_0x99F6)
+_0xCEE6.Refresh()
+for Instance in pairs(_0x3C17.Entries) do
+if Instance.Name == _0x99F6.Name then
+_0x3C17:Remove(Instance)
+end
+end
+end))
+_0x4FF5:GiveSignal(_0xE5A5.PlayerRemoving:Connect(function(_0x99F6)
+_0xFFDE.RemovePlayer(_0x99F6)
+_0xCEE6.Refresh()
+end))
+_0xCEE6.Refresh()
+_0xC39D.Start()
+task.spawn(function()
+_0x9AAD:WaitForChild(string.char(78,80,67), 10)
+_0xED31.Refresh()
+end)
+_0x4FF5:GiveSignal(_0xA3CC.RenderStepped:Connect(function()
+local _0x0957 = _0x9AAD.CurrentCamera
+if not _0x0957 then return end
+local _0x78F4 = os.clock()
+local _0x9AE5 = _0x5ECA.GetRoot()
+local _0xB14F = _0x9AE5 and _0x9AE5.Position or _0x0957.CFrame.Position
+_0xFFDE.Update(_0x0957, _0xB14F, _0x78F4)
+for _0x9C48 = 1, #_0x4862 do
+local _0x4158 = _0x4862[_0x9C48]
+if _0x4158.Enabled then
+_0x4158:Update(_0x0957, _0xB14F, _0x78F4)
+end
+end
+end))
+_0x4FF5.SaveManager:BuildConfigSection(_0xA49B.Config)
+_0xA49B.Config:AddButton({
+_0x40D5 =string.char(68,101,108,101,116,101,32,67,111,110,102,105,103),
+Func = function()
+local _0xA86B = _0x4FF5.Options.MeowConfigList.Value
+if not _0xA86B or _0xA86B ==""then
+_0x5ECA.Notify(string.char(83,101,108,101,99,116,32,97,32,99,111,110,102,105,103,32,116,111,32,100,101,108,101,116,101,46))
+return
+end
+local _0xFBE2, _0x3416 = _0x4FF5.SaveManager:Delete(_0xA86B)
+if _0xFBE2 == false then
+_0x5ECA.Notify(string.char(69,114,114,111,114,32,100,101,108,101,116,105,110,103,32,99,111,110,102,105,103,58,32).. tostring(_0x3416))
+return
+end
+_0x4FF5.SaveManager:RefreshConfigList()
+_0x5ECA.Notify(string.char(67,111,110,102,105,103,32,100,101,108,101,116,101,100,58,32).. _0xA86B)
+end,
+})
+_0x4FF5:OnUnload(function()
+_0xE71C.SetEnabled(false)
+_0xB1D4.SetEnabled(false)
+_0x162D.SetEnabled(false)
+_0x0E93.SetEnabled(false)
+_0xE6E1.SetEnabled(false)
+_0xE375.SetEnabled(false)
+if _0x162D.Circle then
+_0x5ECA.Remove(_0x162D.Circle)
+_0x162D.Circle = nil
+end
+_0xFFDE.Enabled = false
+for _0x99F6 in pairs(_0xFFDE.Entries) do
+_0xFFDE.RemovePlayer(_0x99F6)
+end
+for _, _0x4158 in ipairs(_0x4862) do
+_0x4158.Enabled = false
+_0x4158:Stop()
+end
+_0xC39D.Stop()
+_0x5ECA.ClearPools()
+end)
+task.defer(function()
+_0x4FF5.SaveManager:LoadAutoLoad()
+end)
